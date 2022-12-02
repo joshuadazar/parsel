@@ -1,0 +1,60 @@
+.jumplinks {
+  .card--topic {
+    grid-column: 1/-1;
+
+    &:not(:first-child) {
+      margin-top: 16px;
+    }
+
+    .card__wrapper-cta > * {
+      pointer-events: none;
+    }
+
+    @include from(tablet) {
+      &:first-child {
+        grid-column: 2/7;
+      }
+
+      &:nth-child(2) {
+        grid-column: 7/12;
+        margin-top: 0;
+      }
+
+      &:last-child {
+        grid-column: 2/7;
+        grid-row: 2/3;
+      }
+    }
+
+    @include from(desktop) {
+      &:nth-child(2) {
+        margin: 0 18px;
+      }
+
+      &:last-child {
+        margin-top: 0;
+      }
+
+      .card__wrapper-cta > * {
+        pointer-events: initial;
+      }
+    }
+  }
+
+  @include from(desktop) {
+    display: block;
+    text-align: center;
+
+    .card--topic {
+      display: inline-block;
+      width: 292px;
+
+      @media (forced-colors: active) {
+        &:hover {
+          border: 1px solid;
+          width: 294px;
+        }
+      }
+    }
+  }
+}

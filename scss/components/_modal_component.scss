@@ -1,0 +1,139 @@
+$button-mobile-pos: 16px;
+$button-tablet-pos: 32px;
+
+.modal-component {
+  align-items: center;
+  bottom: 0;
+  display: none;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+
+  &::before {
+    background-color: var(--color-shade);
+    content: '';
+    height: 100%;
+    left: 0;
+    opacity: 0.9;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &.show {
+    display: flex;
+  }
+
+  .modal__wrapper {
+    background-color: var(--color-sand);
+    border-radius: 16px;
+    max-height: calc(100% - 40px);
+    overflow: hidden;
+    overflow-y: auto;
+    position: relative;
+    width: auto;
+
+    @media (forced-colors: active) {
+      border: 1px solid;
+    }
+
+    @include upto(mobile) {
+      overflow: auto;
+
+      > div {
+        overflow: auto;
+      }
+    }
+
+    @include from(tablet) {
+      max-width: 704px;
+      width: 704px;
+    }
+
+    @include from(desktop) {
+      max-width: 800px;
+      width: 800px;
+    }
+
+    @include from(desktop-l) {
+      max-width: 900px;
+      width: 900px;
+    }
+  }
+
+  .modal__btn {
+    appearance: none;
+    background: none;
+    border: none;
+    border-radius: 16px;
+    color: var(--color-forest);
+    cursor: pointer;
+    height: 24px;
+    padding: 0;
+    position: absolute;
+    top: $button-mobile-pos;
+    width: 24px;
+    z-index: zindex(layer-5);
+
+    &.modal__close-btn {
+      right: $button-mobile-pos;
+    }
+
+    &.modal__back-btn {
+      display: none;
+      left: $button-mobile-pos;
+    }
+
+    @media (forced-colors: active) {
+      &:hover {
+        border: 1px solid;
+      }
+    }
+
+    .icon--svg {
+      height: 100%;
+      width: 100%;
+    }
+
+    @include from(tablet) {
+      height: 32px;
+      top: $button-tablet-pos;
+      width: 32px;
+
+      &.modal__close-btn {
+        right: $button-tablet-pos;
+      }
+
+      &.modal__back-btn {
+        left: $button-tablet-pos;
+      }
+    }
+
+    @include from(desktop) {
+      align-items: center;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      height: 40px;
+      justify-content: center;
+      width: 40px;
+
+      .icon--svg {
+        height: 32px;
+        width: 32px;
+      }
+
+      &:hover, &:focus {
+        background-color: rgba(24, 128, 56, 0.1);
+      }
+    }
+  }
+
+  &.show-back-btn .modal__back-btn {
+    display: block;
+  }
+}

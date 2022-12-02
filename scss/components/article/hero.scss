@@ -1,0 +1,132 @@
+.article-hero {
+  $self: &;
+
+  overflow: hidden;
+  position: relative;
+
+  @include from(desktop) {
+    margin-top: $navbar-desktop;
+  }
+
+  &:not(.bg--img) {
+    #{$self}__bg {
+      background-color: var(--color-dark-sand);
+      height: 181px;
+      width: 100%;
+
+      #{$self}__img-wrapper {
+        display: none;
+      }
+
+      @include from(tablet) {
+        height: 177px;
+      }
+
+      @include from(desktop) {
+        height: 280px;
+      }
+
+      @include from(desktop-l) {
+        height: 376px;
+      }
+    }
+
+    &.bg--yellow {
+      #{$self}__bg {
+        background-color: var(--color-ray);
+      }
+    }
+
+    #{$self}__content {
+      @include from(desktop) {
+        margin-top: -112px;
+      }
+
+      @include from(desktop-l) {
+        margin-top: -184px;
+      }
+    }
+  }
+
+  &.bg--img {
+    #{$self}__bg {
+      img {
+        aspect-ratio: 4/3;
+        display: block;
+        height: auto;
+        width: 100%;
+
+        @include from(tablet) {
+          aspect-ratio: initial;
+        }
+
+        @include from(desktop) {
+          aspect-ratio: 16/9;
+          left: 0;
+          position: absolute;
+          top: 0;
+        }
+      }
+
+      @include from(desktop) {
+        width: 100%;
+        height: 392px;
+      }
+
+      @include from(desktop-l) {
+        height: 512px;
+      }
+    }
+  }
+
+  &__content {
+    @extend %internal-padding-top;
+    padding-bottom: 32px;
+    position: relative;
+
+    @include from(desktop) {
+      padding-bottom: 72px;
+    }
+
+    @include from(desktop-l) {
+      padding-bottom: 96px;
+    }
+
+    &-bg {
+      background-color: var(--color-sand);
+      border-radius: 32px 32px 0 0;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      will-change: transform;
+      z-index: zindex(background);
+
+      @include from(desktop-l) {
+        grid-column: 2/12;
+      }
+    }
+
+    &-wrapper {
+      grid-column: 1/-1;
+      text-align: left;
+      z-index: zindex(layer-1);
+
+      @include from(tablet) {
+        grid-column: 3/11;
+        text-align: center;
+      }
+
+      @include from(desktop-l) {
+        grid-column: 4/10;
+      }
+    }
+
+    #{$self}__eyebrow {
+      margin-bottom: 16px;
+    }
+
+    #{$self}__author {
+      margin-top: 16px;
+    }
+  }
+}

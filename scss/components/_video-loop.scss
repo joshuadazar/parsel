@@ -1,0 +1,73 @@
+.video-loop {
+  background-color: var(--color-sand);
+  padding: 0;
+
+  @include from(tablet) {
+    padding: 80px 0 0;
+  }
+
+  @include from(desktop) {
+    padding: 100px 0 0;
+  }
+
+  &__wrapper {
+    @extend .grid;
+    text-align: center;
+  }
+
+  &__text {
+    grid-column: 1 / -1;
+
+    @include from(desktop) {
+      grid-column: 3 / span 8;
+    }
+
+    @include from(desktop-l) {
+      grid-column: 4 / span 6;
+    }
+
+    .h2 {
+      margin-bottom: 72px;
+
+      @include from(desktop) {
+        margin-bottom: 54px;
+      }
+
+      @include from(desktop-l) {
+        margin-bottom: 20px;
+      }
+    }
+
+    .cta {
+      display: block;
+      margin-bottom: 15px;
+
+      @include from(tablet) {
+        display: inline-block;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__video {
+    display: block;
+    width: 100%;
+  }
+
+  &__overlay {
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      height: 10%;
+      background: linear-gradient(
+        0deg,
+        rgba(250, 248, 239, 0) 0%,
+        rgba(250, 248, 239, 1) 100%
+      );
+    }
+  }
+}

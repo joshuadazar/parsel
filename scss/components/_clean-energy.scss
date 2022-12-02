@@ -1,0 +1,305 @@
+$circle_colors: rgba(0, 0, 0, 0), #313846, #959bd6, hsl(68, 98%, 68%), #7bff92,
+  rgba(0, 216, 99, 0);
+
+.clean-energy {
+  background-color: var(--color-shade);
+  position: relative;
+
+  &__lines {
+    display: none;
+
+    @include from(desktop) {
+      display: block;
+      height: 100%;
+      left: 0;
+      margin-top: -564px;
+      overflow: hidden;
+      position: absolute;
+      top: 50vh;
+      width: 100%;
+    }
+  }
+
+  &__line {
+    border-top: thin solid rgba(250, 248, 240, 0.15);
+    display: block;
+    padding-bottom: 140px;
+    width: 100%;
+  }
+
+  &__circle {
+    border-radius: 50%;
+    display: block;
+    height: 32px;
+    left: -16px;
+    margin-right: 45px;
+    min-width: 32px;
+    position: relative;
+
+    @include from(desktop) {
+      height: 40px;
+      left: 50%;
+      margin-bottom: 101px;
+      top: -20px;
+      transform: translateX(-50%);
+      width: 40px;
+    }
+
+    @for $i from 1 through length($circle_colors) {
+      &:nth-child(#{$i}) {
+        background-color: nth($circle_colors, $i);
+      }
+    }
+
+    &:first-child,
+    &:last-child {
+      @include from(desktop) {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 80px;
+        margin-bottom: 61px;
+        top: -40px;
+        width: 80px;
+      }
+    }
+
+    &:first-child {
+      background-color: rgba(0, 0, 0, 1);
+      display: none;
+      margin-left: 50%;
+
+      @include from(desktop) {
+        background-color: rgba(0, 0, 0, 0);
+        display: block;
+        margin-left: 0;
+        background-image: url('/welcome/static/images/clean-energy-circle-01.png');
+      }
+    }
+
+    &:last-child {
+      background-color: rgba(0, 216, 99, 1);
+      margin-right: 50%;
+
+      @include from(desktop) {
+        background-color: rgba(0, 216, 99, 0);
+        margin-right: 0;
+        background-image: url('/welcome/static/images/clean-energy-circle-02.png');
+      }
+    }
+
+    &:nth-child(2) {
+      margin-left: 50%;
+
+      @include from(desktop) {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__container {
+    @extend .grid;
+    position: relative;
+
+    @include from(desktop) {
+      height: 100%;
+      padding-bottom: 100px;
+    }
+  }
+
+  &__copy {
+    color: var(--color-sand);
+    grid-column: 1 / span 4;
+    padding-top: 80px;
+    text-align: center;
+
+    @include from(tablet) {
+      grid-column: 3 / span 8;
+      order: 2;
+    }
+
+    @include from(desktop) {
+      display: flex;
+      flex-direction: column;
+      grid-column: 2 / span 4;
+      height: 100vh;
+      justify-content: center;
+      order: initial;
+      padding-top: 0;
+      text-align: left;
+    }
+
+    a,
+    a:active {
+      color: currentColor;
+      text-decoration: underline;
+    }
+  }
+
+  &__header {
+    margin-bottom: 24px;
+
+    @include from(desktop) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__body {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &__ui {
+    grid-column: 1 / span 4;
+    order: 3;
+    position: relative;
+
+    @include from(tablet) {
+      order: 4;
+      grid-column: 1 / span 12;
+    }
+
+    @include from(desktop) {
+      display: flex;
+      flex-direction: column;
+      grid-column: 7 / span 3;
+      height: 100vh;
+      justify-content: center;
+      margin: 0;
+      order: initial;
+      width: auto;
+    }
+
+    svg {
+      color: black;
+      display: block;
+      margin: 80px auto;
+      width: 58.75vw;
+
+      @include from(desktop) {
+        margin: 0;
+        width: auto;
+      }
+
+      & > g:not(.background) {
+        transform-origin: center;
+        @media (prefers-reduced-motion: reduce) {
+          transform: none !important;
+        }
+      }
+    }
+  }
+
+  &__spectrum {
+    display: flex;
+    grid-column: 1 / span 4;
+    margin: 54px -15px 14px;
+    min-width: 100%;
+    order: 1;
+    overflow: hidden;
+    position: relative;
+
+    @include from(tablet) {
+      grid-column: 1 / span 12;
+      margin-left: -32px;
+      margin-right: -32px;
+      order: 3;
+    }
+
+    @include from(desktop) {
+      display: block;
+      grid-column: 11 / span 1;
+      margin: 0;
+      order: initial;
+      overflow: initial;
+      top: 50vh;
+      width: auto;
+    }
+  }
+
+  &__labels {
+    background-color: var(--color-shade);
+    color: var(--color-sand);
+    grid-column: 1 / span 4;
+    order: 1;
+    position: relative;
+    text-align: center;
+
+    @include from(tablet) {
+      grid-column: 1 / span 12;
+      order: 3;
+    }
+
+    @include from(desktop) {
+      grid-column: 12 / span 1;
+      left: 0;
+      order: initial;
+      padding-bottom: 8px;
+      padding-top: 8px;
+      position: absolute;
+      right: 0;
+      top: 50vh;
+      transform: translateY(-50%);
+    }
+
+    p {
+      // TODO : Move this style into typography
+      // cdrobish@hugeinc.com
+      font-family: Roboto Mono;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 13px;
+    }
+  }
+
+  &__label,
+  &__label .h6 {
+    // TODO : Move this style into typography
+    // cdrobish@hugeinc.com
+    font-family: Roboto Mono;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    line-height: 16px;
+
+    &:not(:first-child) {
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 0px;
+
+      @include from(desktop) {
+        top: 8px;
+      }
+    }
+  }
+
+  &__label .h6 {
+    text-transform: uppercase;
+  }
+
+  &__fact-container {
+    display: none;
+
+    @include from(tablet) {
+      display: block;
+      grid-column: 3 / span 8;
+      order: 1;
+      padding-top: 85px;
+    }
+
+    @include from(desktop) {
+      grid-column: 2 / span 5;
+      order: initial;
+      position: absolute;
+      bottom: 100px;
+    }
+
+    .facts {
+      border: 1px solid #305e4b;
+    }
+  }
+}

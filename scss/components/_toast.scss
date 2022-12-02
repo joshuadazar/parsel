@@ -1,0 +1,141 @@
+.toast {
+  bottom: 0;
+  display: none;
+  justify-content: center;
+  left: 0;
+  padding: 16px;
+  position: fixed;
+  transition: transform .3s ease; 
+  width: 100%;
+  z-index: 10;
+
+  &.show {
+    display: block;
+  }
+
+  .nav-fixed & {
+    transform: translate(0, -64px);
+  }
+
+  &__content {
+    align-items: center;
+    box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 2px 6px 2px rgba(60, 64, 67, 0.15);
+    border-radius: 4px;
+    color: var(--color-forest);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-family-base);
+    padding: 16px;
+    width: 100%;
+
+    &.toast--warning {
+      background-color: var(--color-sand);
+    }
+
+    &.toast--success {
+      background-color: var(--color-ray);
+      color: var(--color-grey-900);
+      
+      .btn-close-toast {
+        margin-left: 4px;
+      }
+    }
+
+    .toast__icon {
+      display: none;
+    }
+
+    .toast__message {
+      margin: 0;
+    }
+
+    .toast__cta {
+      margin-right: 4px;
+    }
+  }
+
+  &__message {
+    color: inherit;
+    margin: 0 8px;
+  }
+
+  .cta-wrapper {
+    align-items: center;
+    display: flex;
+  }
+
+  .icon--svg {
+    color: var(--color-green-900);
+    height: 24px;
+    width: 24px;
+  }
+
+  .btn-close-toast {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    height: 24px;
+    padding: 0;
+  }
+
+  @include from(tablet) {
+    left: 50%;
+    width: fit-content;
+    transform: translate(-50%, 0);
+
+    &.show {
+      display: flex;
+    }
+
+    .nav-fixed & {
+      transform: translate(-50%, -64px);
+    }
+
+    &__content {
+      padding: 8px 16px;
+
+      .toast__icon {
+        display: inline;
+      }
+
+      .toast__cta {
+        margin-right: 16px;
+      }
+
+      .toast__message {
+        margin-left: 8px;
+      }
+
+      .cta-wrapper {
+        margin-left: 24px;
+      }
+
+      &.toast--success {
+        padding: 16px;
+
+        .toast__message {
+          min-width: 414px;
+        }
+        .btn-close-toast {
+          margin-left: 0;
+        }
+      }
+
+      &.toast--warning {
+        .toast__message {
+          min-width: 325px;
+        }
+      }
+    }
+
+    &__message {
+      margin-right: 24px;
+    }
+  }
+
+  @include from(desktop) {
+    .nav-fixed & {
+      transform: translate(-50%, 0);
+    }
+  }
+}

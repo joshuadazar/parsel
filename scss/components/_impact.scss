@@ -1,0 +1,274 @@
+.impact {
+  --parallax-rate:1;
+  background-color: var(--color-dark-sand);
+  position: relative;
+  overflow: hidden;
+
+  .grid {
+    position: relative;
+  }
+
+  &__fact-container {
+    display: none;
+
+    @include from(tablet) {
+      display: block;
+      grid-column: 4 / span 6;
+      margin-bottom: 100px;
+    }
+
+    @include from(desktop) {
+      grid-column: 2 / span 3;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__text {
+    grid-column: 1 / -1;
+    padding: 220px 0 290px;
+    position: relative;
+    text-align: center;
+
+    @include upto(desktop) {
+      .h2 {
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
+
+    @include from(tablet) {
+      grid-column: 3 / span 8;
+      padding: 250px 0 360px;
+    }
+
+    @include from(desktop) {
+      grid-column: 4 / span 6;
+      padding: 275px 0 215px;
+    }
+
+    @include from(desktop-m) {
+      padding: 375px 0;
+    }
+
+    .h2 {
+      margin-bottom: 16px;
+      text-align: center;
+
+      @include from(tablet) {
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+      }
+
+      @include from(desktop) {
+        width: 90%;
+      }
+
+      @include from(desktop-m) {
+        width: auto;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 24px;
+      text-align: center;
+    }
+  }
+
+  .circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  /**
+    * TODO Breakout circle into own file
+    **/
+
+  .circle {
+    height: 136px;
+    width: 136px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    position: absolute;
+    transform: translate3d(0, calc(var(--parallax-rate, 0) * 1px), 0);
+
+    @include from(tablet) {
+      height: 266px;
+      width: 266px;
+    }
+
+    @include from(desktop) {
+      height: 310px;
+      width: 310px;
+    }
+
+    @include from(desktop-m) {
+      height: 450px;
+      width: 450px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transform: none !important;
+    }
+
+    &:nth-child(1) {
+      bottom: 125px;
+      right: -68px;
+
+      @include from(tablet) {
+        bottom: 414px;
+        right: -177px;
+      }
+
+      @include from(desktop) {
+        bottom: 177px;
+        height: 310px;
+        right: -130px;
+        width: 310px;
+      }
+
+      @include from(desktop-m) {
+        bottom: 238px;
+        height: 450px;
+        right: -252px;
+        width: 450px;
+      }
+    }
+
+    &:nth-child(2) {
+      right: -51px;
+      top: 35px;
+
+      @include from(tablet) {
+        right: -103px;
+        top: 40px;
+      }
+
+      @include from(desktop) {
+        right: -105px;
+        top: 96px;
+      }
+
+      @include from(desktop-m) {
+        right: -126px;
+        top: 70px;
+      }
+    }
+
+    &:nth-child(3) {
+      left: -35px;
+      top: 8px;
+
+      @include from(tablet) {
+        left: -99px;
+        top: 5px;
+      }
+
+      @include from(desktop) {
+        left: -78px;
+        top: 20px;
+      }
+
+      @include from(desktop-m) {
+        left: -170px;
+        top: -20px;
+        @media (prefers-reduced-motion: reduce) {
+          top: 20px;
+        }
+      }
+    }
+
+    &:nth-child(4) {
+      bottom: 85px;
+      right: 9px;
+
+      @include from(tablet) {
+        bottom: 296px;
+        right: -16px;
+      }
+
+      @include from(desktop) {
+        bottom: 82px;
+        right: -8px;
+      }
+
+      @include from(desktop-m) {
+        bottom: 90px;
+        right: 0px;
+      }
+    }
+
+    &:nth-child(5) {
+      bottom: 44px;
+      left: -4px;
+      height: 115px;
+      width: 115px;
+      z-index: 10;
+
+      @include from(tablet) {
+        bottom: 274px;
+        height: 168px;
+        left: 99px;
+        width: 168px;
+      }
+
+      @include from(desktop) {
+        bottom: 274px;
+        height: 233px;
+        left: 240px;
+        width: 233px;
+      }
+
+      @include from(desktop-m) {
+        bottom: 309px;
+        height: 328px;
+        left: 280px;
+        width: 328px;
+      }
+    }
+
+    &__outline {
+      border: 10px solid rgba(0, 216, 99, 0.25);
+
+      @include from(desktop) {
+        border-width: 20px;
+      }
+    }
+
+    &__fill {
+      background-color: rgba(0, 216, 99, 0.25);
+    }
+
+    &__image {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    &__image,
+    &__video {
+      overflow: hidden;
+
+      img {
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+      }
+
+      video {
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}

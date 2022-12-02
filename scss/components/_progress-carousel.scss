@@ -1,0 +1,181 @@
+.progress-carousel {
+  &.rendered {
+    .card {
+      opacity: 1;
+    }
+  }
+
+  &__slides {
+    @include upto(desktop) {
+      display: flex;
+      margin: 0;
+      margin-bottom: 56px;
+      grid-column-gap: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  .card {
+    margin-right: var(--margin-mobile);
+    opacity: 0;
+
+    &:first-child {
+      margin: 0 var(--margin-mobile);
+    }
+
+    &__img-wrapper {
+      margin-bottom: 1.5rem;
+    }
+
+    &:last-child {
+      position: relative;
+      &::after {
+        content: '';
+        height: 1px;
+        position: absolute;
+        right: -16px;
+        top: 0;
+        width: 16px;
+        @include from(tablet) {
+          right: -32px;
+          width: 32px;
+        }
+      }
+    }
+
+    .card__img {
+      object-fit: cover;
+    }
+
+    @include from(tablet) {
+      margin: 0;
+
+      &:first-child {
+        margin-left: var(--margin-tablet);
+      }
+
+      &:last-child {
+        margin-right: var(--margin-tablet);
+      }
+    }
+
+    @include from(desktop) {
+      margin: 0;
+      opacity: 1;
+
+      &:nth-child(n) {
+        margin: 0;
+        grid-row: 2/3;
+      }
+
+      &:nth-child(-n + 3) {
+        grid-row: 1/2;
+      }
+
+      &:nth-child(3n) {
+        grid-column: 9/12;
+      }
+
+      &:nth-child(3n-1) {
+        grid-column: 5/9;
+      }
+
+      &:nth-child(3n-2) {
+        grid-column: 2/5;
+      }
+    }
+  }
+  .carousel-progress__bar[value] {
+    appearance: none;
+    grid-column: 1/-1;
+    grid-row: progress-bar;
+    height: 2px;
+    width: 100%;
+
+    &::-webkit-progress-bar {
+      background-color: #c4c4c4;
+    }
+
+    &::-webkit-progress-value {
+      background-color: var(--color-shade);
+      height: 4px;
+      transform: translateY(-1px);
+      transition: width 0.5s linear;
+
+      @include from(tablet) {
+        transition: width 0.3s linear;
+      }
+    }
+  }
+
+  .carousel-progress__wrapper {
+    display: inline-flex;
+    grid-column: -1/1;
+    grid-row: navigation-buttons;
+    justify-self: end;
+    margin-top: 16px;
+  }
+
+  .carousel-progress__back,
+  .carousel-progress__next {
+    background: none;
+    border: none;
+    color: var(--color-grey-900);
+    cursor: pointer;
+    height: 24px;
+    position: relative;
+    padding: 4px;
+    z-index: 3;
+
+    &[aria-disabled='true'],
+    &:disabled {
+      color: #c0b9ad;
+      cursor: not-allowed;
+    }
+  }
+
+  .carousel-progress__back-icon,
+  .carousel-progress__next-icon {
+    height: 16px;
+    width: 16px;
+  }
+
+  .carousel-progress__back-icon {
+    transform: scale(-1);
+  }
+
+  .carousel-progress__back {
+    margin-right: 40px;
+    z-index: 2;
+  }
+
+  .carousel-progress__back > *,
+  .carousel-progress__next > * {
+    pointer-events: none;
+  }
+
+  .icon--svg {
+    fill: currentColor;
+    outline: none;
+  }
+
+  @include from(desktop) {
+    &.six-cards {
+      .progress-carousel__slides {
+        grid-template-rows: auto 1fr;
+        grid-row-gap: 40px;
+      }
+    }
+
+    &__progress {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.opening {
+  @extend %generic-padding-bottom;
+
+  .card {
+    grid-column: 1/-1;
+
+    @include from(tablet) {
+      grid-column: 2/12;
+    }
+  }
+
+  .card__content-wrapper {
+    @include subgrid(4, 10, 10);
+
+    & > *{
+      grid-column: 1/-1;
+
+      @include from(tablet) {
+        grid-column: 1/10;
+      }
+
+      @include from(desktop) {
+        grid-column: 1/9;
+      }
+
+      @include from(desktop-l) {
+        grid-column: 1/7;
+      }
+    }
+
+  }
+}

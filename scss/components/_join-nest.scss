@@ -1,0 +1,142 @@
+$padding-mobile: 72px;
+$padding-desktop: 120px;
+$padding-desktop-l: 119px;
+
+.join-nest {
+  overflow: hidden;
+  position: relative;
+
+  &__right-content,
+  &__left-content {
+    position: relative;
+
+    @include from(desktop) {
+      min-height: 546px;
+    }
+
+    @include from(desktop-l) {
+      min-height: 684px;
+    }
+
+    &:before {
+      background-color: var(--color-forest-shade);
+      content: ' ';
+      left: calc(-1 * var(--margin-mobile));
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: calc(100% + var(--margin-mobile) * 2);
+      z-index: 0;
+
+      @include from(tablet) {
+        left: calc(-1 * var(--margin-tablet));
+        width: calc(100% + var(--margin-tablet) * 2);
+      }
+
+      @include from(desktop) {
+        width: 50vw;
+      }
+    }
+  }
+
+  &__left-content {
+    background-color: var(--color-forest-shade);
+    grid-column: 1/-1;
+
+    @include from(desktop) {
+      grid-column: 1/7;
+      grid-row: 1;
+    }
+
+    &:before {
+      @include from(desktop) {
+        left: inherit;
+        right: calc(-1 * (var(--margin-mobile) / 2));
+      }
+    }
+  }
+
+  &__right-content {
+    background-color: var(--color-forest);
+    grid-column: 1/-1;
+    text-align: center;
+    padding: $padding-mobile 0;
+
+    @include from(desktop) {
+      display: flex;
+      flex-direction: column;
+      grid-column: 7/13;
+      grid-row: 1;
+      justify-content: center;
+    }
+
+    &:before {
+      background-color: var(--color-forest);
+
+      @include from(desktop) {
+        left: calc(-1 * (var(--margin-mobile) / 2));
+      }
+    }
+  }
+
+  &__image {
+    display: block;
+    height: auto;
+    max-width: 210px;
+    margin: $padding-mobile auto;
+    position: relative;
+    width: 133px;
+
+    @include from(mobile) {
+      width: 100%;
+    }
+
+    @include from(tablet) {
+      max-width: 231px;
+    }
+
+    @include from(desktop) {
+      margin-bottom: $padding-desktop;
+      margin-top: $padding-desktop;
+      max-width: 307px;
+    }
+
+    @include from(desktop-l) {
+      margin-bottom: $padding-desktop-l;
+      margin-top: $padding-desktop-l;
+      max-width: 448px;
+    }
+  }
+
+  &__copy {
+    color: var(--color-white);
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+
+    @include from(tablet) {
+      max-width: 464px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @include from(tablet) {
+      max-width: 446px;
+    }
+  }
+
+  &__cta,
+  &__login {
+    box-sizing: content-box;
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+
+    @include from(tablet) {
+      max-width: 181px;
+      margin: 0 auto 10px;
+      min-width: 181px;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+.two-column {
+  background-color: var(--color-sand);
+  padding: 96px 0 56px;
+
+  @include from(desktop) {
+    padding: 224px 0 100px;
+  }
+
+  @include from(desktop-l) {
+    padding: 200px 0 100px;
+  }
+
+  &__wrapper {
+    @extend .grid;
+  }
+
+  &__col {
+    text-align: center;
+    @include from(desktop) {
+      text-align: left;
+    }
+
+    &:first-child {
+      grid-column: 1 / -1;
+      margin-bottom: 72px;
+
+      @include from(tablet) {
+        grid-column: 3 / 11;
+      }
+
+      @include from(desktop) {
+        grid-column: 3 / 6;
+        margin-bottom: 0;
+      }
+    }
+    &:last-child {
+      grid-column: 1 / -1;
+
+      @include from(tablet) {
+        grid-column: 3 / 11;
+      }
+
+      @include from(desktop) {
+        grid-column: 7 / span 4;
+      }
+
+      @include from(desktop-l) {
+        grid-column: 8 / span 3;
+      }
+    }
+  }
+
+  &__block {
+    margin-bottom: 28px;
+    @include from(desktop) {
+      margin-bottom: 32px;
+    }
+    &-title {
+      margin-bottom: 16px;
+      @include upto(desktop) {
+        font-size: 20px;
+        line-height: 28px;
+      }
+    }
+  }
+}

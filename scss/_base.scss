@@ -1,0 +1,93 @@
+html,
+body {
+  box-sizing: border-box;
+  background: var(--color-sand);
+  color: var(--color-grey-900);
+  font-family: var(--font-family-base);
+  width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 14px;
+
+  &.blocked {
+    overflow: hidden;
+  }
+
+  @include from(desktop) {
+    font-size: 16px;
+  }
+
+  &::after {
+    content: 'small';
+    display: none;
+  }
+
+  @include from(tablet) {
+    &::after {
+      content: 'medium';
+    }
+  }
+
+  @include from(desktop) {
+    &::after {
+      content: 'large';
+    }
+  }
+
+  @include from(large-desktop) {
+    &::after {
+      content: 'extra-large';
+    }
+  }
+
+  @media screen and (orientation: portrait) {
+    &::before {
+      content: 'portrait';
+      display: none;
+    }
+  }
+}
+
+main {
+  opacity: 1;
+  transform: none;
+
+  /* This pseudo element identifies when the styles have loaded are loaded in the
+    app and is used in the component-initializer.js. Before, the styles could
+    have a delay in the load and at the same time be running some scripts that
+    can depend on these styles for proper visual behavior. Now, with this
+    pseudo-element, when the styles have already been loaded, the component
+    initializer evaluates if the pseudo-element is found, if so, executes the
+    Javascript services. */
+  &::after {
+    content: 'loaded';
+    display: none;
+  }
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.disable-scroll {
+  overflow: hidden;
+}

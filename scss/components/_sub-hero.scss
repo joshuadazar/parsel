@@ -1,0 +1,29 @@
+.sub-hero {
+  @extend %internal-padding-bottom;
+ 
+  &__eyebrow, &__title, &__copy {
+    color: var(--color-grey-900);
+    grid-column: 1/-1;
+    text-align: center;
+
+    @include from(tablet) {
+      grid-column: 2/12;
+    }
+
+    @include from(desktop-l) {
+      grid-column: 3/11;
+    }
+  }
+
+  &__eyebrow {
+    margin-bottom: 16px;
+  }
+
+  &__copy {
+    margin-top: 16px;
+  }
+
+  &__title {
+    color: var(--color-grey-900);
+  }
+}

@@ -1,0 +1,13 @@
+.energy-shift {
+  @extend %generic-padding-bottom;
+  @extend %generic-padding-top;
+  background-color: var(--color-dark-sand);
+
+  @include upto(mobile) {
+    overflow: hidden;
+  }
+
+  @include from(desktop-l) {
+    overflow: hidden;
+  }
+}

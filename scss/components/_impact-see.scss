@@ -1,0 +1,233 @@
+.impact-see {
+  background-color: var(--color-sand);
+  padding-bottom: 20px;
+  padding-top: 95px;
+
+  @include from(tablet) {
+    padding-bottom: 144px;
+  }
+
+  @include from(desktop){
+    padding-bottom: 160px;
+    padding-top: 140px;
+  }
+
+  @include from(desktop-m) {
+    padding-bottom: 178px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    @include from(desktop){
+      display: block;
+    }
+  }
+
+  &__header {
+    @extend .grid;
+    display: flex;
+    order: 2;
+    padding-top: 95px;
+    position: relative;
+    text-align: center;
+
+    @include from(desktop){
+      display: grid;
+      margin-bottom: 100px;
+      order: 1;
+      padding-top: 0;
+      text-align: left;
+    }
+
+    .h2 {
+      grid-column: 1 / span 4;
+      margin: 0 auto;
+
+      @include from(tablet){
+        grid-column: 1 / span 12;
+      }
+
+      @include from(desktop){
+        margin: 0;
+        grid-column: 2 / span 11;
+      }
+    }
+  }
+
+  &__circles {
+    @extend .grid;
+    display: flex;
+    height: 58.75vw;
+    order: 1;
+    overflow: visible;
+    width: 100%;
+    @include from(desktop) {
+      display: grid;
+      height: auto;
+      order: 2;
+      width: auto;
+    }
+  }
+
+  &__circle {
+    border-radius: 50%;
+    height: 58.75vw;
+    position: absolute;
+    width: 58.75vw;
+
+    &:nth-child(1) {
+      right: -50%;
+      transform: translateX(-5.625vw);
+      @include from(desktop){
+        right: auto;
+        transform: none;
+      }
+    }
+
+    &:nth-child(2) {
+      left: -50%;
+      transform: translateX(5.625vw);
+      @include from(desktop){
+        left: auto;
+        transform: none;
+      }
+    }
+
+    &:nth-child(3),
+    &:nth-child(4) {
+      display: none;
+      @include from(desktop){
+        display: block;
+      }
+    }
+
+    @include from(desktop){
+      display: initial;
+      grid-column: span 3;
+      height: auto;
+      padding-top: 100%;
+      position: relative;
+      width: auto;
+    }
+
+    &--outline {
+      @include from(desktop){
+        &:nth-child(4) {
+          visibility: hidden;
+        }
+      }
+
+      &:after {
+        border: 20px solid rgba(118, 211, 161, 0.25);
+        border-radius: 50%;
+        box-sizing: border-box;
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+
+    &--fill {
+      background-color: rgba(0, 216, 99, 0.25);
+    }
+
+    &--ui {
+      display: block !important;
+      left: -32px;
+      padding: 0;
+      position: relative;
+      visibility: hidden;
+
+      @include from(desktop) {
+        left: 0;
+      }
+
+      .background path {
+        fill: rgba(0, 216, 99, 0.25);
+      }
+
+      .bolt {
+        fill: #00D863;
+      }
+
+      g:not(.background) {
+        transform-origin: center;
+        @media (prefers-reduced-motion: reduce) {
+          transform: none !important;
+        }
+
+        path {
+          color: #00D863;
+        }
+      }
+    }
+  }
+
+  &__fact-container {
+    .facts.light {
+      background-color: var(--color-dark-sand);
+      display: none;
+
+      @include from(tablet) {
+        display: block;
+        grid-column: 4/10;
+      }
+
+      @include from(desktop) {
+        display: flex;
+        grid-column: 5/9;
+      }
+    }
+  }
+
+  &__tab-timer {
+    padding-top: 72px;
+
+    @include from(desktop) {
+      padding: 160px 0;
+    }
+
+    .tab-timer__panel.leafs-animation {
+      background-color: var(--color-renew-tonal);
+
+      img, svg {
+        bottom: 0;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+        height: 210px;
+        object-fit: initial;
+        position: absolute;
+        right: 40%;
+        width: 141px;
+
+        @include from(tablet) {
+          height: 383px;
+          right: 40%;
+          width: 254px;
+        }
+
+        @include from(desktop) {
+          height: 345px;
+          right: 32%;
+          width: 231px;
+        }
+
+        @include from(desktop-m) {
+          height: 490px;
+          width: 329px;
+        }
+
+        @include from(desktop-l) {
+           right: 210px;
+        }
+      }
+    }
+  }
+}

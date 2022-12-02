@@ -1,0 +1,127 @@
+.modal-thermostat {
+  display: none;
+
+  .wrapper {
+    padding: 48px 24px 32px;
+    width: 288px;
+  }
+
+  &__image {
+    height: 220px;
+    margin-bottom: 24px;
+    position: relative;
+    text-align: center;
+    z-index: zindex(background);
+
+    @include from(tablet) {
+      height: 272px;
+      margin: 114px 0px;
+    }
+
+    @include from(desktop) {
+      height: 350px;
+      margin: 100px 0px;
+    }
+
+    @include from(desktop-l) {
+      height: 370px;
+      margin: 115px 0px;
+    }
+
+    .image-bg {
+      background-color: var(--color-drew);
+      border-radius: 0 239px 239px 0;
+      height: 100%;
+      left: -24px;
+      position: absolute;
+      width: calc(100% + 24px);
+      z-index: zindex(hidden);
+    }
+
+    img {
+      height: 220px;
+      width: 220px;
+
+      @include from(tablet) {
+        height: auto;
+        width: 100%;
+      }
+
+      @include from(desktop) {
+        height: 350px;
+        transform: translateX(-30px);
+        width: 350px;
+      }
+
+      @include from(desktop-l) {
+        height: auto;
+        transform: translateX(0);
+        width: 100%;
+      }
+    }
+  }
+
+  &.modal-dark[style="display: block;"] {
+    background-color: var(--color-shade);
+    color: var(--color-sand);
+
+    .image-bg {
+      background-color: var(--color-forest);
+    }
+
+    & ~ .modal__btn {
+      color: var(--color-sand);
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+
+  &__content {
+    text-align: center;
+
+    @include upto(tablet) {
+      .body-copy--large {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  .content__copy {
+    margin-top: 16px;
+  }
+
+  .content__cta {
+    display: block;
+    margin-top: 24px;
+
+    @include from(desktop) {
+      margin-top: 32px;
+    }
+  }
+
+  @include from(tablet) {
+    .wrapper {
+      display: grid;
+      grid-column-gap: 32px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      padding: 0 64px;
+      width: 100%;
+    }
+
+    &__image .image-bg {
+      left: -64px;
+      width: calc(100% + 64px);
+    }
+
+    &__content {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+  }
+}

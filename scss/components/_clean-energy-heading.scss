@@ -1,0 +1,103 @@
+//TODO(dwasilewski) - This should be abstracted to typgraphy and potentionally
+// a section heading macro.
+
+.clean-energy-heading {
+  $self: &;
+
+  background-color: var(--color-shade);
+  overflow: hidden;
+  padding-bottom: 0;
+  z-index: 10;
+  position: relative;
+
+  &__heading-container {
+    color: var(--color-sand);
+    margin: 0 auto;
+    max-width: 632px;
+    padding: 96px 16px 72px;
+    text-align: center;
+
+    @include from(tablet) {
+      padding-top: 120px;
+    }
+
+    @include from(desktop) {
+      padding-bottom: 96px;
+      padding-top: 160px;
+    }
+  }
+
+
+  .tab-timer__panel.thermostat-animation {
+    background: linear-gradient(90deg, #41F67F 0.65%, #8FFDC8 76.03%);
+
+    img {
+      bottom: 0;
+      height: 280px;
+      object-fit: initial;
+      opacity: 1;
+      position: absolute;
+      right: 0;
+      transition: opacity 3s ease .5s;
+      width: 280px;
+
+      @include from(tablet) {
+        height: 430px;
+        width: 430px;
+      }
+
+      @include from(desktop) {
+        height: 388px;
+        width: 388px;
+      }
+
+      @include from(desktop-m) {
+        height: 550px;
+        width: 550px;
+      }
+    }
+
+    &.tab-timer--hidden {
+      .tab-timer__panel__sequence-container img:nth-child(2) {
+        opacity: 0;
+        transition-duration: 0s;
+        transition-delay: 0s;
+      }
+    }
+  }
+
+  .tab-timer__panel.grid-mix-animation {
+    background: linear-gradient(90deg, #41F67F 0.65%, #8FFDC8 76.03%);
+
+    img {
+      height: 185px;
+      left: 50%;
+      object-fit: initial;
+      position: absolute;
+      width: 200px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      @include from(tablet) {
+        bottom: 50%;
+        height: 221px;
+        left: initial;
+        right: 15%;
+        top: initial;
+        width: 445px;
+        transform: translate(0, 50%);
+      }
+
+      @include from(desktop) {
+        height: 185px;
+        width: 373px;
+      }
+
+      @include from(desktop-m) {
+        height: 221px;
+        right: 150px;
+        width: 445px;
+      }
+    }
+  }
+}

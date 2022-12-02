@@ -1,0 +1,63 @@
+.quote{
+  $self: &;
+
+  @extend %generic-padding-bottom;
+
+  .card{
+    grid-column: 1/-1;
+
+    @include from(tablet) {
+      grid-column: 2/12;
+    }
+  }
+
+  .card__wrapper-cta {
+    overflow: visible;
+    padding-left: 16px;
+
+    &:hover {
+      .cta__link--arrow{
+        &::after {
+          transform: translateX(8px);
+        }
+      }
+
+      .cta__is-external {
+        &::after {
+          transform: translate(4px, -4px) rotate(-45deg);
+        }
+      }
+    }
+
+    @include from(tablet) {
+      padding-left: 0;
+    }
+  }
+
+  .quote__copy{
+    color: var(--color-shade);
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .quote__copy {
+    quotes: "“" "”" "‘" "’";
+
+    &::before {
+      content: open-quote;
+      position: absolute;
+      top: 0;
+      left: -16px;
+
+      @include from(desktop) {
+        left: -24px;
+      }
+    }
+
+    &::after {
+      bottom: 0;
+      content: close-quote;
+      position: absolute;
+    }
+  }
+}

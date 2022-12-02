@@ -1,0 +1,97 @@
+.thermostat {
+  @extend %generic-padding-top;
+  @extend %generic-padding-bottom;
+  text-align: center;
+
+  .sub-hero__title {
+    @include from(tablet) {
+      grid-column: 3/11;
+    }
+
+    @include from(desktop) {
+      grid-column: 2/12;
+    }
+    
+    @include from(desktop-l) {
+      grid-column: 3/11;
+    }
+  }
+
+  .body-copy--large {
+    @include from(tablet) {
+      font-size: rem(18px);
+      line-height: rem(28px);
+    }
+  }
+
+  .progress-carousel  {
+    margin-bottom: 72px;
+
+    @include from(tablet) {
+      margin-bottom: 56px;
+    }
+
+    @include from(desktop) {
+      margin-bottom: 74px;
+    }
+
+    @include from(desktop-l) {
+      margin-bottom: 66px;
+    }
+
+    .card{
+      @include from(desktop){
+        width: 284px;
+        max-width: 284px;
+
+        &__title {
+          font-size: rem(18px);
+          line-height: rem(24px);
+        }
+
+        &:not(:last-child) {
+          margin-right: 32px;
+        }
+      }
+
+      @include from(desktop-l){
+        width: 330px;
+        max-width: 330px;
+
+        &__title {
+          font-size: rem(20px);
+          line-height: rem(28px);
+        }
+
+        &:not(:last-child) {
+          margin-right: 24px;
+        }
+      }
+    }
+
+    .progress-carousel__slides {
+      @include from(desktop){
+        display: flex;
+        grid-column-gap: 0;
+        justify-content: center;
+      }
+    }
+  }
+
+  &__disclaimer {
+    color: var(--color-grey-900);
+    margin-bottom: 10px;
+
+    @include from(tablet) {
+      display: inline-block;
+      margin-bottom: 0px;
+      margin-right: 10px;
+    }
+  }
+
+  &__disclaimer-cta {
+    @include from(tablet) {
+      display: inline-block;
+    }
+  }
+}

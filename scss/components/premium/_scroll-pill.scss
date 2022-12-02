@@ -1,0 +1,450 @@
+$mobile-position: center 50vh;
+$landscape-position: center 50vh;
+$tablet-position: center 43vh;
+$desktop-position: center 45vh;
+$desktop-l-position: center 40vh;
+$desktop-l-short-position: center 43vh;
+$desktop-xl-short-position: center 33vh;
+$desktop-xl-position: center 40vh;
+
+@mixin hidden-title {
+  opacity: 1;
+  position: relative;
+  display: block;
+}
+
+@mixin scroll-pill-grid {
+  left: 0;
+  margin: 0;
+  position: relative;
+  top: 0;
+  transform: none;
+  width: 100%;
+}
+
+@mixin scroll-pill-front {
+  background-image: url('/welcome/static/images/premium/Clean_energy_pill.png');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: contain;
+  height: 330px;
+  position: relative;
+  top: 48px;
+}
+
+@mixin scroll-pill-back {
+  background-position: center bottom;
+  background-size: contain;
+  height: 300px;
+  position: relative;
+}
+
+.scroll-pill-section {
+  background-color: var(--color-dark-sand);
+  height: 200vh;
+  position: relative;
+
+  @include upto(mobile) {
+    height: auto;
+    padding: 48px 0;
+
+    &.parallax-back {
+      .scroll-pill-section:last-child() {
+        opacity: 0;
+      }
+    }
+  }
+
+  @media (max-width: $landscape) and (orientation: landscape) and (max-height: $mobile-landscape-zoom) {
+    height: auto;
+    padding: 48px 0;
+
+    &.parallax-back {
+      .scroll-pill-section:last-child() {
+        opacity: 0;
+      }
+    }
+  }
+
+  &.static-bg {
+    .scroll-pill-back {
+      position: fixed;
+
+      @include upto(mobile) {
+        position: relative;
+      }
+
+      @media (max-width: $landscape) and (orientation: landscape) and (max-height: $mobile-landscape-zoom) {
+        position: relative;
+      }
+    }
+  }
+
+  &.fixed {
+    .bg-effect {
+      top: 100vh;
+
+      @include upto(mobile) {
+        top: 0;
+      }
+
+      @media (max-width: $landscape) and (orientation: landscape) and (max-height: $mobile-landscape-zoom) {
+        top: 0;
+      }
+
+      @include from(tablet) {
+        top: inherit;
+      }
+
+      &:before {
+        background-position: $mobile-position;
+        position: fixed;
+
+        @include upto(mobile) {
+          position: relative;
+        }
+
+        @media (max-width: $landscape) and (orientation: landscape) and (max-height: $mobile-landscape-zoom) {
+          position: relative;
+        }
+
+        @include from(tablet) {
+          background-position: $tablet-position;
+        }
+
+        @media (max-width: $landscape) and (orientation: landscape) {
+          background-position: $landscape-position;
+        }
+
+        @include from(desktop) {
+          background-position: $desktop-position;
+        }
+
+        @include from(desktop-l) {
+          background-position: $desktop-l-position;
+        }
+
+        @media (min-width: $desktop) and (max-height: $desktop-landscape) {
+          background-position: $desktop-l-short-position;
+        }
+
+        @media (min-width: $desktop-xl) and (max-height: $desktop-landscape) {
+          background-size: 915px 452px;
+          background-position: $desktop-xl-short-position;
+        }
+
+        @media (min-width: $desktop-xl) and (min-height: $desktop-portrait) {
+          background-size: 915px 452px;
+          background-position: $desktop-xl-position;
+        }
+      }
+    }
+  }
+
+  .scroll-pill-back {
+    background-color: var(--color-dark-sand);
+    background-image: url('/welcome/static/images/premium/Fossil_Fuel_pill.png');
+    background-position: $mobile-position;
+    background-repeat: no-repeat;
+    background-size: 290px 153px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+    @include upto(mobile) {
+      @include scroll-pill-back;
+
+      .scroll-pill-section__title:nth-of-type(2) {
+        opacity: 0;
+      }
+    }
+
+    @include from(tablet) {
+      background-size: 586px 310px;
+      background-position: $tablet-position;
+    }
+
+    @media (max-width: $landscape) and (orientation: landscape) {
+      background-size: 290px 153px;
+      background-position: $landscape-position;
+    }
+
+    @media (max-width: $landscape) and (orientation: landscape) and (max-height: $mobile-landscape-zoom) {
+      @include scroll-pill-back;
+
+      .scroll-pill-section__title:nth-child(2) {
+        opacity: 0;
+      }
+    }
+
+    @include from(desktop) {
+      background-size: 635px 335px;
+      background-position: $desktop-position;
+    }
+
+    @include from(desktop-l) {
+      background-size: 915px 452px;
+      background-position: $desktop-l-position;
+    }
+
+    @media (min-width: $desktop) and (max-height: $desktop-landscape) {
+      background-size: 586px 310px;
+      background-position: $desktop-l-short-position;
+    }
+
+    @media (min-width: $desktop-xl) and (max-height: $desktop-landscape) {
+      background-size: 915px 452px;
+      background-position: $desktop-xl-short-position;
+    }
+
+    @media (min-width: $desktop-xl) and (min-height: $desktop-portrait) {
+      background-size: 915px 452px;
+      background-position: $desktop-xl-position;
+    }
+  }
+
+  .bg-effect {
+    clip-path: polygon(0% 0, 100% 0, 100% 100%, 0 100%);
+    height: 100vh;
+    left: 0;
+    position: absolute;
+    top: 100vh;
+    width: 100%;
+    z-index: 4;
+
+    @include upto(mobile) {
+      display: none;
+    }
+
+    &:before {
+      background-image: url('/welcome/static/images/premium/Clean_energy_pill.png');
+      background-repeat: no-repeat;
+      background-size: 290px 153px;
+      background-position: $mobile-position;
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      @include upto(mobile) {
+        display: none;
+      }
+
+      @media (max-width: $landscape) and (orientation: landscape) and (max-height: $mobile-landscape-zoom) {
+        display: none;
+      }
+
+      @include from(tablet) {
+        background-size: 586px 310px;
+        background-position: $tablet-position;
+      }
+
+      @media (max-width: $landscape) and (orientation: landscape) {
+        background-size: 290px 153px;
+        background-position: $landscape-position;
+      }
+
+      @include from(desktop) {
+        background-size: 635px 335px;
+        background-position: $desktop-position;
+      }
+
+      @include from(desktop-l) {
+        background-size: 915px 452px;
+        background-position: $desktop-l-position;
+      }
+
+      @media (min-width: $desktop) and (max-height: $desktop-landscape) {
+        background-size: 586px 310px;
+        background-position: $desktop-l-short-position;
+      }
+
+      @media (min-width: $desktop-xl) and (max-height: $desktop-landscape) {
+        background-size: 915px 452px;
+        background-position: $desktop-xl-short-position;
+      }
+
+      @media (min-width: $desktop-xl) and (min-height: $desktop-portrait) {
+        background-size: 915px 452px;
+        background-position: $desktop-xl-position;
+      }
+    }
+  }
+
+  .scroll-pill-front {
+    background-color: transparent;
+    color: var(--color-shade);
+    height: 100vh;
+    top: 100vh;
+    position: relative;
+    z-index: 2;
+
+    @include upto(mobile) {
+      @include scroll-pill-front;
+    }
+
+    @media (max-width: $landscape) and (orientation: landscape) and (max-height: $mobile-landscape-zoom) {
+      @include scroll-pill-front;
+    }
+
+    .bg-effect::before {
+      @include from(desktop) {
+        height: 310px;
+        width: 310px;
+      }
+
+      @include from(desktop-l) {
+        height: 448px;
+        width: 448px;
+      }
+    }
+  }
+
+  div[class^='scroll-pill'] .grid {
+    left: 50%;
+    margin: 0;
+    position: absolute;
+    top: calc(50% - 48px);
+    transform: translate(-50%, -100%);
+    width: 100%;
+  }
+
+  @include upto(mobile) {
+    div[class^='scroll-pill'] .grid {
+      @include scroll-pill-grid;
+    }
+  }
+
+  @include from(tablet) {
+    div[class^='scroll-pill'] .grid {
+      top: calc(50% - 130px);
+    }
+  }
+
+  @media (max-width: $landscape) and (orientation: landscape) {
+    div[class^='scroll-pill'] .grid {
+      top: calc(50% - 48px);
+    }
+  }
+
+  @media (max-width: $landscape) and (orientation: landscape) and (max-height: $mobile-landscape-zoom) {
+    div[class^='scroll-pill'] .grid {
+      @include scroll-pill-grid;
+    }
+  }
+
+  @include from(desktop) {
+    div[class^='scroll-pill'] .grid {
+      top: calc(50% - 96px);
+    }
+  }
+
+  @include from(desktop-l) {
+    div[class^='scroll-pill'] .grid {
+      top: calc(50% - 200px);
+    }
+  }
+
+  @media (min-width: $desktop) and (max-height: $desktop-landscape) {
+    div[class^='scroll-pill'] .grid {
+      top: calc(50% - 96px);
+    }
+  }
+
+  @include from(desktop-xl) {
+    div[class^='scroll-pill'] .grid {
+      top: calc(50% - 192px);
+    }
+  }
+
+  &__content.parallax-section__content {
+    grid-column: 1/-1;
+    margin: 0 auto;
+    max-width: none;
+    position: relative;
+    text-align: center;
+    width: calc(100% - var(--margin-mobile) * 2);
+
+    @include from(tablet) {
+      grid-column: 2/12;
+    }
+
+    @include from(desktop) {
+      grid-column: 3/11;
+      height: auto;
+    }
+
+    @include from(desktop-l) {
+      height: inherit;
+    }
+  }
+
+  &__title {
+    opacity: 1;
+    position: relative;
+
+    @include upto(mobile) {
+      padding: 0;
+    }
+
+    @media (max-width: $landscape) and (orientation: landscape) and (max-height: $mobile-landscape-zoom) {
+      padding: 0;
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+
+    &:not(.no-transition) {
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &.hidden-title {
+      height: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      transition: opacity 0s ease-in-out;
+
+      @include upto(mobile) {
+        @include hidden-title;
+      }
+
+      @media (max-width: $landscape) and (orientation: landscape) and (max-height: $mobile-landscape-zoom) {
+        @include hidden-title;
+      }
+    }
+  }
+}
+
+.scroll-pill-section + .clean-energy-match .pill-block__text {
+  @media (min-width: $mobile) and (max-width: $tablet) and (orientation: portrait) {
+    left: 0;
+    opacity: 0;
+    padding: 0 16px;
+    position: absolute;
+    top: calc(-100vh - 50px);
+    transition: opacity 0.5s ease;
+    z-index: -1;
+
+    &.fixed {
+      position: fixed;
+      opacity: 1;
+      top: calc(100vh - 50px);
+      z-index: 1;
+    }
+
+    &.static {
+      position: absolute;
+      top: -50px;
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .body-copy--medium {
+      -webkit-text-size-adjust: 100%; 
+    }
+  }
+}

@@ -1,0 +1,127 @@
+$border-radius-pill: 1533px;
+
+.pill-block {
+  &__text {
+    grid-column: 1/-1;
+    text-align: center;
+
+    @include from(tablet) {
+      grid-column: 3/11;
+    }
+
+    @include from (desktop) {
+      align-self: center;
+      grid-column: 2/6;
+      grid-row: 1/1;
+      text-align: left;
+    }
+
+    &__title {
+      margin-bottom: 16px;
+    }
+
+    &__copy {
+      margin-bottom: 27px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__text--right {
+    @include from(desktop) {
+      grid-column: 8/12;
+    }
+  }
+
+  &__media {
+    grid-column: 1/-1;
+    grid-row: 1/1;
+    height: 280px;
+    margin-bottom: 40px;
+    position: relative;
+    
+    @include from (tablet) {
+      grid-column: 3/13;
+      height: 430px;
+      margin-bottom: 56px;
+    }
+    
+    @include from (desktop) {
+      align-self: center;
+      grid-column: 7/13;
+      height: 388px;
+      margin-bottom: 0;
+    }
+
+    @include from (desktop-l) {
+      height: 550px;
+    }
+
+    .energy-media {
+      border-radius: 239px 0 0 239px;
+      display: block;
+      height: 280px;
+      right: calc(var(--margin-mobile) * -1);
+      overflow: hidden;
+      position: absolute;
+      width: calc(100% + var(--margin-mobile));
+
+      @include from(tablet) {
+        height: 430px;
+        right: calc(var(--margin-tablet) * -1);
+        width: calc(100% + var(--margin-tablet));
+      }
+
+      @include from (desktop) {
+        border-radius: $border-radius-pill 0 0 $border-radius-pill;
+        height: 388px;
+      }
+
+      @include from (desktop-l) {
+        height: 550px;
+      }
+
+      @include from (desktop-xl) {
+        border-radius: $border-radius-pill;
+        right: auto;
+        width: 1000px;
+      }
+
+      &__video {
+        height: 100%;
+        object-fit: cover;
+        object-position: left;
+        width: 100%;
+      }
+    }
+  }
+
+  &__media--left {
+    @include from (tablet) {
+      grid-column: 1/11;
+    }
+
+    @include from (desktop) {
+      grid-column: 1/7;
+    }
+
+    .energy-media {
+      border-radius: 0 239px 239px 0;
+      left: calc(var(--margin-mobile) * -1);
+      right: auto;
+
+      @include from (tablet) {
+        border-radius: 0 $border-radius-pill $border-radius-pill 0;
+        left: calc(var(--margin-tablet) * -1);
+      }
+
+      @include from (desktop-xl) {
+        border-radius: $border-radius-pill;
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+}

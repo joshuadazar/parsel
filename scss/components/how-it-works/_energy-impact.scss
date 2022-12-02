@@ -1,0 +1,45 @@
+.energy-impact {
+  @extend %generic-padding-bottom;
+  @extend %generic-padding-top;
+  background-color: var(--color-ray);
+
+  .cta__link {
+    color: var(--color-grey-900);
+
+    &::after{
+      background-image: url(/welcome/static/images/g900-arrow.png);
+    }
+  }
+
+  .progress-carousel .card {
+    .card__img {
+      aspect-ratio: 3/2;
+    }
+
+    @include from(desktop) {
+      &:nth-child(n) {
+        width: calc(100% + 10%);
+      }
+
+      &:nth-child(3n-1) {
+        grid-column: 5/8;
+        margin-left: 12%;
+      }
+
+      &:last-child {
+        transform: translateX(-10%);
+      }
+    }
+  }
+
+  @include from(tablet) {
+    .sub-hero__title {
+      grid-column: 3/11;
+    }
+
+    .body-copy--large {
+      font-size: rem(18px);
+      line-height: rem(28px);
+    }
+  }
+}

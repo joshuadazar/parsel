@@ -1,0 +1,51 @@
+.banner-animated {
+  background-color: var(--color-ray);
+  height: 82px;
+  overflow: hidden;
+
+  .bg {
+    animation-name: logo;
+    animation-direction: reverse;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+    display: block;
+    height: 100%;
+    width: 100%;
+
+    &::before {
+      animation-name: logo;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-play-state: paused;
+      background-image: url('/welcome/static/images/world+nest@2x.png');
+      background-position-x: -110px;
+      background-position-y: 21px;
+      background-repeat: repeat-x;
+      background-size: 269px 40px;
+      content: '';
+      display: block;
+      height: 100%;
+      width: 250%;
+    }
+  }
+
+  &.running {
+    .bg:before {
+      animation-play-state: running;
+    }
+
+    @include from(desktop) {
+      &:hover .bg {
+        animation-play-state: running;
+      }
+    } 
+  }
+}
+
+@keyframes logo {
+  from { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  to { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -269, 0, 0, 1); }
+}

@@ -1,0 +1,136 @@
+.faq {
+  background-color: var(--color-forest-shade);
+  padding: 96px 0 105px;
+  width: 100%;
+
+  &__video {
+    margin: 0 auto;
+    position: relative;
+    width: fit-content;
+  }
+
+  &__video.show {
+    height: 0px;
+    padding-top: 56.25%;
+
+    video.faq__card-video {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .video-wrapper {
+      display: block;
+    }
+
+    & ~ .faq__card-body .faq__card-cta {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0s;
+      z-index: -1;
+    }
+
+    .pause-button-wrapper {
+      display: none;
+    }
+  }
+
+  .video-wrapper {
+    display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &__main-title {
+    color: var(--color-dark-sand-second);
+    margin: 0 var(--margin-tablet);
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  &__list {
+    grid-column: 1/-1;
+    padding-top: 48px;
+  }
+
+  &__help-center {
+    color: var(--color-sand);
+    grid-column: 1/-1;
+    margin-top: 56px;
+    text-align: center;
+  }
+
+  .help-center__link {
+    color: inherit;
+    display: block;
+    margin-top: 2px;
+  }
+
+  @include from(tablet) {
+    &__list {
+      grid-column: 3/11;
+      padding-top: 60px;
+    }
+
+    .video-wrapper {
+      height: 261px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 461px;
+    }
+
+    &__video.show {
+      margin-bottom: 300px;
+      padding-top: 0;
+    }
+
+    &__help-center {
+      margin-top: 72px;
+    }
+
+    .help-center__link {
+      display: inline-block;
+      margin-left: 8px;
+      margin-top: 0px;
+    }
+  }
+
+  @include from(desktop) {
+    padding: 160px 0;
+
+    &__main-title {
+      margin-bottom: 72px;
+    }
+
+    &__video {
+      width: 100%;
+    }
+
+    .video-wrapper {
+      height: 100%;
+      left: 0;
+      transform: translateX(0);
+      width: 100%;
+    }
+
+    &__video.show {
+      align-self: center;
+      margin-bottom: 0;
+      padding-top: 56.25%;
+
+      & ~ .faq__card-body {
+        opacity: 0;
+        transition: opacity 0s;
+        z-index: -1;
+      }
+    }
+  }
+
+  @include from(desktop-l) {
+    &__card-video {
+      height: auto;
+    }
+  }
+}

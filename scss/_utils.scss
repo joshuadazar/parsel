@@ -1,0 +1,93 @@
+.d-none {
+  display: none;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.br-16 {
+  border-radius: 16px;
+}
+
+.pr-3 {
+  padding-right: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-5 {
+  margin-bottom: 3rem;
+}
+
+.c-ray {
+  color: var(--color-ray)
+}
+
+.generic-padding-bottom {
+  @extend %generic-padding-bottom;
+}
+
+.generic-padding-top {
+  @extend %generic-padding-top;
+}
+
+.generic-margin-bottom {
+  @extend %generic-margin-bottom;
+}
+
+.img {
+  height: auto;
+  width: 100%;
+}
+
+.complete-column {
+  grid-column: 1/-1;
+}
+
+@include from(tablet) {
+  .d-md-block {
+    display: block;
+  }
+
+  .d-md-none {
+    display: none;
+  }
+
+  .align-items-md-center {
+    align-items: center;
+  }
+
+  .mb-md-3 {
+    margin-bottom: 1rem;
+  }
+}
+
+@include from(desktop) {
+  .d-lg-block {
+    display: block;
+  }
+
+  .d-lg-none {
+    display: none;
+  }
+
+  .align-items-lg-left {
+    align-items: flex-start;
+  }
+}
+
+// Sets a rem value for font sizes; based on default browser font size of 16px
+@function rem($pixel-size) {
+  @return calc($pixel-size / 16px) * 1rem;
+}

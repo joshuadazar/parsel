@@ -1,0 +1,63 @@
+.marquee {
+  $self: &;
+
+  &.bg-dark {
+    @extend %generic-padding-bottom;
+    @extend %generic-padding-top;
+    background-color: var(--color-shade);
+    color: var(--color-sand);
+
+    #{$self}__header {
+      &-title {
+        margin-bottom: 0;
+      }
+
+      &-paragraph {
+        @extend %internal-padding-bottom;
+        margin: 0;
+      }
+
+      @include from(tablet) {
+        grid-column: 2/12;
+      }
+
+      @include from(desktop) {
+        grid-column: 3/11;
+      }
+
+      @include from(desktop-l) {
+        grid-column: 4/10;
+      }
+    }
+
+    .progress-carousel .card {
+      .cta__link::after {
+        background-image: url(/welcome/static/images/sand-arrow.png);
+      }
+
+      .card__content-wrapper > * {
+        color: var(--color-sand);
+      }
+    }
+
+    .carousel-progress__bar[value] {
+      &::-webkit-progress-bar {
+        background-color: var(--color-dark-sand);
+      }
+
+      &::-webkit-progress-value {
+        background-color: var(--color-renew);
+      }
+    }
+
+    .carousel-progress__back,
+    .carousel-progress__next {
+      color: var(--color-renew);
+
+      &[aria-disabled='true'],
+      &:disabled {
+        color: var(--color-dark-sand);
+      }
+    }
+  }
+}

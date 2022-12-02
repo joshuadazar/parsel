@@ -1,0 +1,33 @@
+.dataArrList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(19rem, 1fr));
+    perspective: 800px;
+    .card{
+      cursor:pointer;
+      padding:.2em;
+      transition: all 0.5s ease-out;
+      &:hover{
+        transform: translatey(-2%);
+        transition:all 0.3s ease-in;
+        box-shadow: 0 -3px 15px silver;
+        
+        transform-style: preserve-3d;
+      }
+      strong{
+        font-size: 2em;
+        background: pink;
+        display: flex;
+        justify-content: center;
+        padding: .5em 0;
+      }
+      p{
+        padding:1em 0.5em;
+        line-height: 1.5em;
+        font-weight: 300;
+        
+      }
+      img{
+        width: 100%;
+      }
+    }
+}

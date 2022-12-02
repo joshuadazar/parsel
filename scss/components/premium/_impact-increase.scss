@@ -1,0 +1,50 @@
+.impact-increase {
+  @extend %generic-padding-top;
+
+  padding-bottom: 130px;
+  overflow: hidden;
+
+  @include from(desktop-l) {
+    padding-bottom: 160px;
+  }
+
+  &__header {
+    .title {
+      @extend %internal-margin-bottom;
+
+      grid-column: 1/-1;
+      text-align: center;
+
+      @include from(tablet) {
+        grid-column: 3/11;
+      }
+
+      @include from(desktop) {
+        grid-column: 4/10;
+      }
+
+      @include from(desktop-l) {
+        grid-column: 3/11;
+      }
+    }
+  }
+
+  .tab-timer__button {
+    margin-bottom: 0;
+
+    @include from(desktop) {
+      margin-bottom: 40px;
+    }
+  }
+
+  sub {
+    font-size: rem(8px);
+    line-height: rem(15px);
+    vertical-align: bottom;
+  }
+
+  .tab-timer__bp-data-unit sub {
+    vertical-align: -webkit-baseline-middle;
+    vertical-align: -moz-middle-with-baseline;
+  }
+}

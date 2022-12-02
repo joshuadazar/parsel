@@ -1,0 +1,357 @@
+.hero {
+  $self: &;
+  --parallax-rate: 1;
+  background: var(--color-sand);
+  overflow: hidden;
+  padding: 58px 0 106px;
+
+  .cta {
+    &--primary {
+      display: block;
+      grid-column: 1/-1;
+      margin-top: 60px;
+      text-align: center;
+      z-index: 1;
+
+      @include from(tablet) {
+        grid-column: 2/5;
+      }
+    }
+
+    &--only-mobile {
+      @include from(tablet) {
+        display: none;
+      }
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__logo {
+    grid-column: 1/-1;
+    max-width: 164px;
+  }
+
+  &__title {
+    grid-column: 1/-1;
+    letter-spacing: -1px;
+    margin: 0 0 24px;
+
+    @include from(tablet) {
+      letter-spacing: 0;
+    }
+
+    @include from(desktop-l) {
+      letter-spacing: -3.5px;
+    }
+
+    img,
+    video {
+      clip-path: circle(17px at center);
+      display: inline-block;
+      height: 36px;
+      vertical-align: middle;
+      width: 36px;
+    }
+  }
+
+  &__copy {
+    grid-column: 1/-1;
+    position: relative;
+    z-index: zindex(default);
+
+    strong {
+      color: var(--color-green-800);
+      font-weight: 700;
+    }
+
+    .text-underline {
+      color: var(--color-grey-900);
+      position: relative;
+
+      &::after {
+        background-color: var(--color-grey-900);
+        bottom: 0;
+        content: '';
+        height: 1px;
+        left: 0;
+        position: absolute;
+        right: 0;
+      }
+
+      &:hover {
+        color: var(--color-black);
+
+        &::after {
+          background-color: var(--color-black);
+        }
+      }
+    }
+  }
+
+  &__cta {
+    grid-column: 1/-1;
+    margin-top: 24px;
+
+    @include upto(mobile) {
+      white-space: break-spaces;
+    }
+  }
+
+  .circle {
+    transform: translate3d(0, calc(var(--parallax-rate, 0) * 1px), 0);
+
+    &__image {
+      transform: translate3d(0, calc(var(--parallax-rate, 0) * 1px), 0)
+        rotate(calc(var(--parallax-rate, 0) * 0.3deg));
+
+      @media (prefers-reduced-motion: reduce) {
+        transform: none !important;
+      }
+    }
+  }
+
+  &__background {
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+  }
+
+  &__background-shape--image {
+    bottom: 0;
+    height: 136px;
+    position: absolute;
+    right: 0;
+    transform: translate(50%, 50%);
+    width: 136px;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  &__background-shape--outline {
+    .circle__outline {
+      border-radius: 50%;
+      border: 10px solid rgba(0, 216, 99, 0.25);
+      box-sizing: border-box;
+      content: '';
+      height: 100%;
+      width: 100%;
+
+      @media (prefers-reduced-motion: reduce) {
+        transform: none !important;
+      }
+    }
+
+    bottom: 0;
+    height: 136px;
+    position: absolute;
+    right: 0;
+    transform: translate(35%, 115%);
+    width: 136px;
+  }
+
+  @include from(tablet) {
+    padding-top: 72px;
+
+    &__logo {
+      grid-column: 2/5;
+      max-width: 190px;
+    }
+
+    &__title {
+      grid-column: 2/10;
+    }
+
+    &__copy {
+      grid-column: 2/10;
+    }
+
+    &__cta {
+      grid-column-start: 2;
+    }
+
+    &__background-shape--image {
+      height: 160px;
+      transform: translate(50%, 50%);
+      width: 160px;
+    }
+
+    &__background-shape--outline {
+      height: 160px;
+      transform: translate(35%, 115%);
+      width: 160px;
+    }
+  }
+
+  @include from(desktop) {
+    padding: 96px 0 340px;
+
+    @media (prefers-reduced-motion: reduce) {
+      padding-bottom: 128px;
+    }
+
+    &__logo {
+      max-width: 254px;
+    }
+
+    &__title {
+      grid-column: 2/10;
+      margin: 0 0 32px;
+
+      @media (max-width: 1224px) and (min-width: 1079px) {
+        grid-column: 2/9;
+      }
+
+      @media (min-width: 1225px) and (max-width: 1279px) {
+        grid-column: 2/8;
+      }
+
+      img,
+      video {
+        clip-path: circle(38px at center);
+        height: 79px;
+        margin-right: 10px;
+        width: 79px;
+      }
+    }
+
+    &__copy {
+      grid-column: 2/8;
+      font-size: rem(18px);
+      line-height: rem(28px);
+    }
+
+    &__background-shape--image {
+      height: 330px;
+      transform: translate(68%, 0);
+      width: 330px;
+    }
+
+    &__background-shape--outline {
+      .circle__outline {
+        border-width: 20px;
+      }
+
+      height: 330px;
+      transform: translate(32%, 65%);
+      width: 330px;
+    }
+  }
+
+  @include from(desktop-m) {
+    &__title {
+      grid-column: 2/12;
+
+      @media (min-width: 1301px) and (max-width: 1440px) {
+        grid-column: 2/11;
+      }
+    }
+  }
+
+  @include from(desktop-l) {
+    padding-top: 120px;
+
+    &__title {
+      grid-column: 2/10;
+      width: calc(100% + 5px);
+    }
+
+    &__logo {
+      max-width: 307px;
+    }
+  }
+
+  // Centered variation
+  &.wide {
+    @extend %generic-padding-bottom;
+
+    padding-top: calc(61px + #{$padding-mobile});
+    text-align: center;
+
+    #{$self}__title {
+      letter-spacing: 0;
+      margin-bottom: 16px;
+      margin-top: 0;
+    }
+
+    @include from(tablet) {
+      padding-top: calc(61px + #{$padding-tablet});
+
+      #{$self}__logo {
+        grid-column: 2/5;
+        max-width: 190px;
+      }
+
+      #{$self}__title {
+        grid-column: 2/12;
+        margin-top: 0;
+      }
+
+      #{$self}__copy {
+        grid-column: 2/12;
+      }
+    }
+
+    @include from(desktop) {
+      padding-top: calc(80px + #{$padding-desktop});
+    }
+
+    @include from(desktop-l) {
+      padding-top: calc(80px + #{$padding-desktop-l});
+
+      #{$self}__title {
+        letter-spacing: -3.5px;
+      }
+    }
+  }
+
+  //dark variation
+  &.dark {
+    @extend %generic-padding-top;
+    @extend %generic-padding-bottom;
+
+    background-color: var(--color-shade);
+
+    .hero__wrapper {
+      color: var(--color-sand);
+    }
+
+    a:not(.cta) {
+      color: var(--color-sand);
+      text-decoration: underline;
+    }
+  }
+
+  &.lite {
+    padding-top: calc(#{var(--header-mobile)} + 36px);
+
+    @include from(tablet) {
+      padding-top: calc(#{var(--header-mobile)} + 60px);
+    }
+
+    @include from(desktop) {
+      padding-top: calc(#{var(--header-desktop)} + 96px);
+    }
+
+    @include from(desktop-l) {
+      padding-top: calc(#{var(--header-desktop)} + 136px);
+    }
+  }
+
+  &.generic {
+    @extend %generic-padding-bottom;
+
+    .cta {
+      margin-top: 24px;
+
+      @include from(desktop-l) {
+        margin-top: 32px;
+      }
+    }
+  }
+}

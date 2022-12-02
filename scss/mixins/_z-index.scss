@@ -1,0 +1,18 @@
+// Standard z-index layers.
+$level: (
+  layer-5: 6,
+  layer-4: 5,
+  layer-3: 4,
+  layer-2: 3,
+  layer-1: 2,
+  default: 1,
+  background: 0,
+  hidden: -1
+);
+
+// Mixin to use consistent z-index layers.
+// This prevents using z-index: 80000 and other weird numbers.
+// Use it as z-index: layer('default');
+@function zindex($key) {
+  @return map-get($level, $key);
+}

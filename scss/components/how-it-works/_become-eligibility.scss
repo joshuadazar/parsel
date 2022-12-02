@@ -1,0 +1,222 @@
+$desktop-max-width: 1347px;
+
+.eligibility {
+  @extend %generic-padding-top;
+  background-color: var(--color-dark-sand);
+
+  @include from (desktop) {
+    padding-bottom: 72px;
+  }
+
+  &__title {
+    .sub-hero {
+      @include from(tablet) {
+        padding-bottom: 72px;
+      }
+
+      @include from(desktop-l) {
+        padding-bottom: 96px;
+      }
+    }
+  }
+
+  &__card-wrapper {
+    background-color: var(--color-sand);
+    border-radius: 188px 188px 0 0;
+    padding: 50px 0 72px;
+    
+    @include from(tablet) {
+      border-radius: 160px 160px 0 0;
+      padding: 72px 0;
+    }
+
+    @include from(desktop) {
+      border-radius: 555px;
+      margin: 0 3%;
+      max-width: $desktop-max-width;
+      padding: 60px 0;
+    }
+
+    @include from(desktop-l) {
+      margin: 0 auto;
+    }
+
+    .grid {
+      @include from (desktop) {
+        margin: 0;
+      }
+
+      @include from (desktop-m) {
+        margin: 0 -16px;
+      }
+    }
+  }
+
+  &__card {
+    grid-column: 2/4;
+    margin: 0 -16px;
+    text-align: center;
+
+    @include upto(mobile) {
+      margin: 0 -4px;
+    }
+
+    &:first-child {
+      grid-column: 1/-1;
+
+      .eligibility__card-paragraph {
+        max-width: 225px;
+      }
+    }
+
+    &:nth-child(2) {
+      margin: 40px -16px;
+    }
+    
+    &:last-child {
+      grid-column: 1/-1;
+
+      .eligibility__card-paragraph {
+        max-width: 260px;
+      }
+    }
+    
+    @include from(tablet) {
+      margin: 0;
+
+      &:first-child {
+        grid-column: 1/5;
+      }
+  
+      &:nth-child(2) {
+        grid-column: 5/9;
+        margin: 0;
+      }
+  
+      &:last-child {
+        grid-column: 9/13;
+      }
+    }
+
+    @include from(desktop) {
+      &:first-child {
+        grid-column: 2/5;
+      }
+  
+      &:nth-child(2) {
+        grid-column: 5/9;
+      }
+  
+      &:last-child {
+        grid-column: 9/12;
+      }
+    }
+
+    @include from(desktop-l) {
+      &:first-child {
+        grid-column: 3/5;
+
+        .eligibility__card-paragraph {
+          max-width: none;
+          margin: 0 -5px;
+        }
+      }
+  
+      &:nth-child(2) {
+        grid-column: 6/8;
+        margin: 0 -8px;
+      }
+  
+      &:last-child {
+        grid-column: 9/11;
+      }
+    }
+  }
+
+  &__card-logo {
+    svg {
+      @extend %iconAnimation;
+      display: block;
+      margin: 0 auto;
+      position: static;
+      transform: none;
+      width: 96px;
+
+      @include from (desktop) {
+        width: 120px;
+      }
+    }
+  }
+
+  &__card-logo.is-visible svg {
+    &#thermostat-ico {
+      #thermoLeaf,
+      #thermoSeven,
+      #thermoZero {
+        animation: fade-up 3s linear;
+        animation-iteration-count: 1;
+      }
+    }
+
+    &#house-meter {
+      #light {
+        animation: fade-up 3s linear;
+        animation-iteration-count: 1;
+      }
+
+      #meter-01 {
+        animation: power-up 3s linear;
+        animation-iteration-count: 1;
+        transform-origin: 29.177% 36.515%;
+      }
+    }
+
+    &#usa-windmills {
+      #windmill-01 {
+        animation: spin 3.5s linear;
+        animation-iteration-count: 1;
+        transform-origin: 35.5% 37.55%;
+      }
+
+      #windmill-02 {
+        animation: spin 3.85s linear;
+        animation-iteration-count: 1;
+        transform-origin: 54.25% 28.4%;
+      }
+
+      #windmill-03 {
+        animation: spin 4.5s linear;
+        animation-iteration-count: 1;
+        transform-origin: 73.55% 44.683%;
+      }
+    }
+  }
+
+  &__card-title {
+    margin: 32px 0 16px;
+
+    @include from (desktop) {
+      margin: 32px 0 24px;
+    }
+  }
+
+  &__card-paragraph {
+    margin: 0 auto;
+    max-width: 155px;
+
+    @include from (tablet) {
+      max-width: 160px;
+    }
+
+    @include from (desktop) {
+      max-width: 155px;
+    }
+
+    &__link {
+      color: var(--color-grey-900);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+}

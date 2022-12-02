@@ -1,0 +1,131 @@
+$height-mobile: 280px;
+$height-tablet: 340px;
+$height-desktop: 388px;
+$height-desktop-l: 550px;
+
+$spacing: (
+  'mobile': $height-mobile,
+  'tablet': $height-tablet,
+  'desktop': $height-desktop,
+  'desktop-l': $height-desktop-l,
+);
+
+@mixin setRuleSpace($property) {
+  @each $name, $value in $spacing {
+    @include from($name) {
+      #{$property}: $value;
+    }
+  }
+}
+
+.two-entry {
+  $self: &;
+
+  @extend %generic-padding-bottom;
+  overflow: hidden;
+
+  &__card-container {
+    @extend %generic-padding-top;
+    @include setRuleSpace(margin-top);
+    grid-column: 1/-1;
+
+    .card__img-wrapper {
+      aspect-ratio: 1/1;
+    }
+  
+    @include upto(tablet) {
+      margin-top: 0;
+    }
+
+    @include from(tablet) {
+      grid-column: 8 / 13;
+      padding-top: 0;
+    }
+
+    @include from(desktop-l) {
+      grid-column: 8 / 12;
+    }
+  }
+
+  &__bubble-container {
+    grid-column: 1/-1;
+
+    @include from(tablet) {
+      grid-column: 1 / 7;
+    }
+
+    @include from(desktop-l) {
+      grid-column: 2 / 7;
+    }
+
+    .card__eyebrow {
+      margin-top: 32px;
+    }
+    .card__wrapper-cta {
+      @include setRuleSpace(padding-top);
+      overflow: visible;
+      position: relative;
+    }
+
+    .card__img-wrapper,
+    .nest-image {
+      @include setRuleSpace(height);
+      border-radius: 0 239px 239px 0;
+      left: calc(var(--margin-mobile) * -1);
+      position: absolute;
+      top: 0;
+      width: calc(100% + var(--margin-mobile));
+
+      @include from(tablet) {
+        left: calc(var(--margin-tablet) * -1);
+        width: calc(100% + var(--margin-tablet));
+      }
+
+      @include from(desktop-l) {
+        border-radius: 1533px;
+        left: auto;
+        right: 0;
+        width: 1000px;
+      }
+    }
+
+    .card__img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &.right {
+    #{$self}__bubble-container {
+      .card__img-wrapper {
+        border-radius: 239px 0 0 239px;
+        left: auto;
+
+        @include from(desktop-l) {
+          border-radius: 1533px;
+          left: 0;
+          right: 0;
+        }
+      }
+
+      @include from(tablet) {
+        grid-column: 7 / 13;
+      }
+
+      @include from(desktop-l) {
+        grid-column: 7 / 12;
+      }
+    }
+
+    #{$self}__card-container {
+      @include from(tablet) {
+        grid-column: 1 / 6;
+        grid-row: 1;
+      }
+
+      @include from(desktop-l) {
+        grid-column: 2 / 6;
+      }
+    }
+  }
+}

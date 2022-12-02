@@ -1,0 +1,75 @@
+.clean-energy-premium {
+  @extend %generic-padding-bottom;
+  @extend %generic-padding-top;
+  background: var(--color-dark-sand);
+
+  &__header {
+    .title {
+
+      grid-column: 1/-1;
+      text-align: center;
+
+      @include from(tablet) {
+        grid-column: 3/11;
+      }
+
+      @include from(desktop) {
+        grid-column: 4/10;
+      }
+
+      @include from(desktop-l) {
+        grid-column: 3/11;
+      }
+    }
+  }
+
+  .tab-timer__tablist {
+    margin-top: 48px;
+    top: 0;
+
+    @include from(desktop) {
+      margin-top: 0;
+    } 
+  }
+
+  .tab-timer__button {
+    margin-bottom: 0;
+
+    @include from(desktop) {
+      margin-bottom: 40px;
+    }
+  }
+
+  .tab-timer__panel:first-child {
+    background: var(--color-forest-shade);
+
+    img {
+      top: 50%;
+      height: 277px;
+      left: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 277px;
+
+      @include from(tablet) {
+        height: 403px;
+        left: auto;
+        right: 16px;
+        transform: translate(0, -50%);
+        width: 403px;
+      }
+
+      @include from(desktop) {
+        height: 314px;
+        right: 32px;
+        width: 314px;
+      }
+
+      @include from(desktop-l) {
+        height: 482px;
+        right: 40px;
+        width: 482px;
+      }
+    }
+  }
+}

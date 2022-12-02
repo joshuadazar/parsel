@@ -1,0 +1,268 @@
+$bg-top-mobile: 65px;
+$bg-top-tablet: 150px;
+
+@mixin parallax-back-mobile {
+  background-position: center bottom;
+  background-size: 120px 120px;
+  height: auto;
+  padding-bottom: 160px;
+  position: relative;
+  margin-bottom: 96px;
+}
+
+@mixin parallax-front-mobile {
+  height: auto;
+  padding: 200px 0 48px;
+  top: 0;
+}
+
+@mixin parallax-front-tablet {
+  height: auto;
+  padding-bottom: 48px;
+  top: 0;
+}
+
+.parallax-section {
+  height: 200vh;
+  position: relative;
+
+  @include upto(mobile) {
+    height: auto;
+
+    .grid {
+      margin: 0 4px;
+    }
+  }
+
+  @media (max-width: $desktop) and (max-height: $tablet) {
+    height: auto;
+
+    .grid {
+      margin: 0 4px;
+    }
+  }
+
+  &.static-bg {
+    .parallax-back {
+      position: fixed;
+
+      @include upto(mobile) {
+        position: relative;
+      }
+
+      @media (max-width: $desktop) and (max-height: $tablet) {
+        position: relative;
+      }
+    }
+  }
+
+  &.fixed {
+    .bg-effect:before {
+      background-position: 50% calc(50vh + #{$bg-top-mobile});
+      position: fixed;
+
+      @include upto(mobile) {
+        background-position: 50%;
+        position: absolute;
+      }
+
+      @media (max-width: $desktop) and (max-height: $tablet) {
+        background-position: 50%;
+        position: absolute;
+      }
+
+      @include from(tablet) {
+        background-position: 50% calc(50vh + #{$bg-top-tablet});
+      }
+
+      @media (min-width: $tablet) and (max-height: $tablet) {
+        background-position: 50%;
+      }
+
+      @include from(desktop) {
+        background-position: 80% 50%;
+      }
+
+      @include from(desktop-l) {
+        background-position: calc(50% + 370px) 50%;
+      }
+    }
+  }
+
+  .parallax-back {
+    background-color: var(--color-sand);
+    background-image: url('/welcome/static/images/earnleaves1.png');
+    background-position: 50% calc(50vh + #{$bg-top-mobile});
+    background-repeat: no-repeat;
+    background-size: 232px 232px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+    @include upto(mobile) {
+      @include parallax-back-mobile;
+    }
+
+    @include from(tablet) {
+      background-position: 50% calc(50vh + #{$bg-top-tablet});
+    }
+
+    @media (max-width: $desktop) and (max-height: $tablet) {
+      @include parallax-back-mobile;
+    }
+
+    @include from(desktop) {
+      background-size: 310px 310px;
+      background-position: 80% 50%;
+    }
+
+    @include from(desktop-l) {
+      background-size: 448px 448px;
+      background-position: calc(50% + 370px) 50%;
+    }
+  }
+
+  .bg-effect {
+    clip-path: polygon(0% 0, 100% 0, 100% 100%, 0 100%);
+    height: 100vh;
+    left: 0;
+    position: absolute;
+    top: 100vh;
+    width: 100%;
+    z-index: 4;
+
+    @include upto(mobile) {
+      height: 120px;
+      top: 59%;
+    }
+
+    @media (max-width: $desktop) and (max-height: $tablet) {
+      height: 120px;
+      top: 59%;
+    }
+
+    &:before {
+      background-image: url('/welcome/static/images/earnleaves2.png');
+      background-repeat: no-repeat;
+      background-size: 232px 232px;
+      background-position: 50% $bg-top-mobile;
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      @include upto(mobile) {
+        background-position: 50%;
+        background-size: 120px 120px;
+      }
+
+      @include from(tablet) {
+        background-position: 50% $bg-top-tablet;
+      }
+
+      @media (max-width: $desktop) and (max-height: $tablet) {
+        background-position: 50%;
+        background-size: 120px 120px;
+      }
+
+      @include from(desktop) {
+        background-size: 310px 310px;
+        background-position: 80% 50%;
+      }
+
+      @include from(desktop-l) {
+        background-size: 448px 448px;
+        background-position: calc(50% + 370px) 50%;
+      }
+    }
+  }
+
+  .parallax-front {
+    background-color: var(--color-shade);
+    color: var(--color-sand);
+    height: 100vh;
+    top: 100vh;
+    position: relative;
+    z-index: 2;
+
+    @include upto(mobile) {
+      @include parallax-front-mobile;
+    }
+
+    @media (max-width: $tablet) and (max-height: $tablet) {
+      @include parallax-front-mobile;
+    }
+
+    @media (min-width: $tablet) and (max-width: $desktop) and (max-height: $tablet) {
+      @include parallax-front-tablet;
+    }
+
+    .bg-effect::before {
+      @include from(desktop) {
+        height: 310px;
+        width: 310px;
+      }
+
+      @include from(desktop-l) {
+        height: 448px;
+        width: 448px;
+      }
+    }
+  }
+
+  &__content {
+    grid-column: 1/-1;
+    margin: 0 auto;
+    margin-top: calc(35vh - 144px);
+    max-width: 464px;
+    text-align: center;
+
+    .parallax-front & {
+      margin-top: 50vh;
+
+      @include upto(mobile) {
+        margin-top: 0;
+      }
+
+      @media (max-width: $desktop) and (max-height: $tablet) {
+        margin-top: 0;
+      }
+    }
+
+    @include from(tablet) {
+      .parallax-front & {
+        margin-top: 65vh;
+      }
+    }
+
+    @include from(desktop) {
+      grid-column: 2/6;
+      height: 264px;
+      max-width: 310px;
+      text-align: left;
+      margin-top: calc(50vh - 132px);
+
+      .parallax-front & {
+        margin-top: calc(50vh - 132px);
+      }
+    }
+
+    @include from(desktop-l) {
+      max-width: 448px;
+      height: 175px;
+      margin-top: calc(50vh - 87px);
+
+      .parallax-front & {
+        margin-top: calc(50vh - 87px);
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+}

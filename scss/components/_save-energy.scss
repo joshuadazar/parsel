@@ -1,0 +1,27 @@
+.save-energy {
+  $self: &;
+
+  background-color: var(--color-dark-sand);
+  overflow: hidden;
+  padding-bottom: 0;
+
+  @include from(desktop) {
+    padding-bottom: 160px
+  }
+
+  &__heading-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 72px;
+    padding-top: 96px;
+
+    @include from(tablet) {
+      padding-top: 120px;
+    }
+
+    @include from(desktop) {
+      padding-bottom: 96px;
+      padding-top: 160px;
+    }
+  }
+}

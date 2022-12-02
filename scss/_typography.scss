@@ -1,0 +1,340 @@
+:root {
+  --font-family-base: 'Google Sans Text', helvetica, arial, sans-serif;
+  --font-family-base-secondary: 'Google Sans Display', helvetica, arial,
+    sans-serif;
+  --font-family-base-tertiary: 'Google Sans Mono', helvetica, arial, sans-serif;
+  --font-family-base-quaternary: 'Google Sans', helvetica, arial, sans-serif;
+}
+
+/**
+  * Standard styles for typography from mobile.
+  * Please use these classnames in your custom sections.
+  * Please avoid overriding this styles in the parent components.
+  * Body copy must be a <p> tag and titles must be h1, h2, h3, h4, h5 tags.
+  * Targeting classnames instead of heading tags in case we need to implement SEO changes.
+  * Example: <h1 class="h1"></h1>
+  * Example: <p class="body-copy--small"></p>
+**/
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.h7,
+.h8 {
+  font-family: var(--font-family-base-secondary);
+  font-weight: 700;
+}
+
+.h1,
+.h2 {
+  font-size: rem(32px);
+  line-height: rem(40px);
+
+  /**
+    * Specific styles for typography from 0 to 319px.
+  **/
+  @include upto(mobile) {
+    font-size: rem(24px);
+    line-height: rem(32px);
+  }
+}
+
+.h2 sup {
+  font-size: 1rem;
+}
+
+.h3 {
+  font-size: rem(24px);
+  line-height: rem(32px);
+
+  /**
+    * Specific styles for typography from 0 to 319px.
+  **/
+  @include upto(mobile) {
+    font-size: rem(24px);
+    line-height: rem(32px);
+  }
+}
+
+.h4 {
+  font-size: rem(28px);
+  line-height: rem(36px);
+
+  /**
+    * Specific styles for typography from 0 to 319px.
+  **/
+  @include upto(mobile) {
+    font-size: rem(20px);
+    line-height: rem(28px);
+  }
+}
+
+.h5 {
+  font-size: rem(20px);
+  line-height: rem(28px);
+}
+
+.h6 {
+  font-size: rem(24px);
+  line-height: rem(32px);
+}
+
+.h7,
+.h8 {
+  font-size: rem(18px);
+  line-height: rem(24px);
+}
+
+.eyebrow {
+  font-family: var(--font-family-base);
+  font-size: rem(12px);
+  font-weight: 700;
+  letter-spacing: rem(1px);
+  line-height: rem(10px);
+  text-transform: uppercase;
+}
+
+.eyebrow-mono {
+  color: var(--color-grey-900);
+  font-family: var(--font-family-base-tertiary);
+  font-size: rem(12px);
+  font-weight: 400;
+  line-height: rem(20px);
+}
+
+.image-caption {
+  color: var(--color-grey-700);
+  font-family: var(--font-family-base);
+  font-size: rem(12px);
+  font-weight: 400;
+  line-height: rem(20px);
+}
+
+.h8 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.quote__copy {
+  font-family: var(--font-family-base-tertiary);
+  font-size: rem(24px);
+  font-weight: 500;
+  line-height: rem(36px);
+}
+
+.article-quote {
+  font-family: var(--font-family-base-tertiary);
+  font-size: rem(24px);
+  font-weight: normal;
+  line-height: rem(32px);
+}
+
+.body-copy {
+  &--legal,
+  &--small,
+  &--medium,
+  &--large {
+    font-family: var(--font-family-base);
+    font-weight: 400;
+  }
+
+  &--legal {
+    font-size: rem(12px);
+    line-height: rem(20px);
+  }
+
+  &--small {
+    font-size: rem(14px);
+    line-height: rem(20px);
+  }
+
+  &--medium {
+    font-size: rem(16px);
+    line-height: rem(24px);
+  }
+
+  &--large {
+    font-size: rem(18px);
+    line-height: rem(28px);
+  }
+}
+
+/**
+  * Standard styles for typography from tablet: 600px.
+**/
+@include from(tablet) {
+  .body-copy {
+    &--large {
+      font-size: rem(16px);
+      line-height: rem(24px);
+    }
+  }
+
+  .eyebrow-mono {
+    font-size: rem(16px);
+    line-height: rem(24px);
+  }
+
+  .article-quote {
+    line-height: rem(36px);
+  }
+}
+
+/**
+  * Standard styles for typography from large desktop: 1024px.
+**/
+@include from(desktop) {
+  .h1 {
+    font-size: rem(56px);
+    line-height: rem(60px);
+  }
+
+  .h2 {
+    font-size: rem(40px);
+    line-height: rem(52px);
+  }
+
+  .h3,
+  .h4 {
+    font-size: rem(32px);
+    line-height: rem(40px);
+  }
+
+  .h5,
+  .h6 {
+    font-size: rem(24px);
+    line-height: rem(32px);
+  }
+
+  .h7 {
+    font-size: rem(20px);
+    line-height: rem(28px);
+  }
+
+  .body-copy {
+    &--large {
+      font-size: rem(18px);
+      line-height: rem(28px);
+    }
+  }
+
+  .h8 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 52px;
+  }
+
+  .quote__copy {
+    font-size: rem(32px);
+    line-height: rem(46px);
+  }
+
+  .article-quote {
+    font-size: rem(30px);
+    line-height: rem(40px);
+  }
+}
+
+/**
+  * Standard styles for typography from large desktop: 1280px.
+**/
+@include from(desktop-m) {
+  .h1 {
+    font-size: rem(96px);
+    line-height: rem(104px);
+    letter-spacing: rem(-3.5px);
+  }
+}
+
+/**
+  * Standard styles for typography from large desktop: 1440px.
+**/
+@include from(desktop-l) {
+  .h2 {
+    font-size: rem(56px);
+    line-height: rem(60px);
+  }
+
+  .h3 {
+    font-size: rem(40px);
+    line-height: rem(52px);
+  }
+
+  .h5 {
+    font-size: rem(28px);
+    line-height: rem(36px);
+  }
+
+  .quote__copy {
+    font-size: rem(40px);
+    line-height: rem(52px);
+  }
+
+  .article-quote {
+    font-size: rem(32px);
+    line-height: rem(45px);
+  }
+}
+
+sup {
+  font-size: rem(10px);
+  line-height: 0;
+  vertical-align: super;
+}
+
+%data-point {
+  color: #6A6D69;
+  font-family: var(--font-family-base-quaternary);
+  font-size: rem(12px);
+  font-weight: 700;
+  letter-spacing: rem(1px);
+  line-height: rem(10px);
+  text-transform: uppercase;
+}
+
+%data-value {
+  color: var(--color-forest);
+  font-family: var(--font-family-base-tertiary);
+  font-size: rem(40px);
+  line-height: rem(52px);
+  letter-spacing: rem(-2px);
+  margin-top: 8px;
+
+  @include from(tablet) {
+    letter-spacing: rem(-4px);
+    font-size: rem(72px);
+    line-height: rem(80px);
+  }
+
+  @include from(desktop) {
+    font-size: rem(72px);
+    line-height: rem(52px);
+  }
+
+  @include from(desktop-l) {
+    font-size: rem(72px);
+    line-height: rem(80px);
+  }
+}
+
+%data-unit {
+  background-color: #5BB974;
+  border-radius: 5px;
+  color: var(--color-shade);
+  font-family: var(--font-family-base-tertiary);
+  font-size: rem(16px);
+  font-weight: 500;
+  padding: 1px 5px;
+
+  @include from(desktop) {
+    font-size: rem(12px);
+    padding: 3px 5px;
+  }
+
+  @include from(desktop-l) {
+    font-size: rem(16px);
+  }
+}

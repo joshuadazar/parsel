@@ -1,0 +1,64 @@
+.pause-button-wrapper {
+  bottom: 8px;
+  right: 8px;
+  position: absolute;
+  z-index: zindex(layer-1);
+
+  svg, span {
+    pointer-events: none;
+  }
+
+  .is-paused {
+    display: none;
+  }
+
+  @include from(desktop) {
+    bottom: 12px;
+    &--left {
+      right: initial;
+      left: 12px;
+    }
+
+    &--right {
+      left: initial;
+      right: 12px;
+    }
+  }
+
+  @include from(desktop-l) {
+    &.full-bleed {
+      bottom: 16px;
+      left: calc(((100vw - 1440px) / 2) + 16px);
+    }
+  }
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  width: auto;
+
+  &:hover {
+    svg {
+      .bg {
+        fill: var(--color-forest);
+      }
+
+      .content {
+        fill: transparent;
+      }
+    }
+  }
+}
+
+.show-play {
+  .is-playing {
+    display: none;
+  }
+  .is-paused {
+    display: inline-block;
+  }
+}

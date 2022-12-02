@@ -1,0 +1,129 @@
+.accordion {
+  $self: &;
+
+  overflow-anchor: none;
+
+  &__item {
+    border-bottom: 1px solid var(--color-sand);
+    position: relative;
+  }
+
+  &__item-head {
+    align-items: flex-start;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    text-align: left;
+    text-decoration: none;
+    width: 100%;
+
+    [dir='rtl'] & {
+      text-align: right;
+    }
+
+    & > * {
+      pointer-events: none;
+    }
+  }
+
+  &__item-body {
+    height: 0;
+    overflow: hidden;
+    transition: height 300ms ease;
+    will-change: height;
+
+    a,
+    a:active {
+      color: var(--color-sand);
+      text-decoration: underline;
+
+      &.keyboard-disbaled {
+        display: none;
+      }
+    }
+  }
+
+  &__item-toggle {
+    flex: 0 0 auto;
+    margin-left: 8px;
+    text-align: center;
+    transform-origin: center;
+    transition: transform 0.3s;
+
+    img {
+      height: 24px;
+      width: 24px;
+
+      @include from(desktop) {
+        height: 32px;
+        width: 32px;
+      }
+    }
+  }
+
+  &__item-toggle--open {
+    display: none;
+  }
+
+  &__item-head[aria-expanded='true'] {
+    #{$self}__item-toggle--closed {
+      display: none;
+    }
+
+    #{$self}__item-toggle--open {
+      display: block;
+    }
+  }
+
+  &__item-label {
+    max-width: 80%;
+  }
+
+  &--is-hidden {
+    #{$self}__item-toggle {
+      display: none;
+    }
+
+    #{$self}__item-head {
+      pointer-events: none;
+    }
+  }
+
+  &--is-1 {
+    #{$self}__item-head {
+      color: #000;
+      margin-bottom: 0;
+      padding: 28px 0;
+      position: relative;
+      text-align: left;
+    }
+
+    #{$self}__item-title {
+      color: var(--color-sand);
+    }
+
+    #{$self}__item-body p {
+      color: var(--color-sand);
+      font-size: 16px;
+      letter-spacing: 0;
+      line-height: 24px;
+      padding: 6px 0 16px;
+
+      &:last-child {
+        padding-bottom: 28px;
+      }
+
+      @include from(desktop) {
+        padding-right: 231px;
+      }
+
+      strong {
+        display: block;
+        font-weight: 700;
+      }
+    }
+  }
+}

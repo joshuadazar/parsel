@@ -1,0 +1,40 @@
+.video-loop.wide {
+  padding: 0;
+
+  .video-loop__text {
+    z-index: 2;
+
+    @include from(tablet) {
+      grid-column: 3 / 11;
+    }
+    
+    @include from(desktop) {
+      margin: 0 -10px;
+    }
+    
+    @include from(desktop-l) {
+      margin: 0;
+    }
+
+    .h2 {
+      margin-bottom: 24px;
+    }
+
+    .cta {
+      margin-bottom: 0;
+    }
+  }
+
+  .nest-image {
+    display: block;
+    z-index: 1;
+
+    img {
+      border-radius: 0;
+      height: auto;
+      margin-bottom: 0;
+      width: 100%;
+    }
+  }
+
+}

@@ -1,0 +1,357 @@
+//
+// All styles inside of the mixin `upto()`
+// are thinking to solve issues about
+// accessibility topics with a zoom text of 200%
+//
+
+.faq {
+  &__carousel {
+    margin: 0 var(--margin-mobile);
+    overflow: hidden;
+    text-align: center;
+  }
+
+  &__carousel-slides {
+    display: flex;
+    position: relative;
+  }
+
+  &__card {
+    left: 0;
+    min-width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: zindex(hidden);
+
+    &-video {
+      border-radius: 16px;
+      height: auto;
+      max-width: 464px;
+      opacity: 0;
+      transition: opacity 1s ease-in;
+      width: 100%;
+    }
+
+    &-body {
+      color: var(--color-dark-sand-second);
+      display: block;
+      margin: 40px 0px 0px;
+      opacity: 0;
+      position: relative;
+      text-align: center;
+      transition: opacity 1s ease-in;
+
+      @include from(tablet) {
+        display: grid;
+        margin-left: var(--margin-mobile);
+        width: calc(100% - var(--margin-mobile) * 2);
+      }
+
+      @include from(desktop) {
+        height: auto;
+      }
+    }
+
+    &-title {
+      grid-column: 1/-1;
+      margin-bottom: 12px;
+    }
+
+    &-paragraph {
+      grid-column: 3/11;
+    }
+
+    &-link {
+      align-items: center;
+      display: flex;
+
+      img {
+        padding-right: 10px;
+      }
+    }
+
+    .pause-button-wrapper {
+      display: block;
+      opacity: 0;
+      transition: opacity 1s ease-in;
+    }
+
+    &-cta {
+      left: 50%;
+      position: absolute;
+      top: -110px;
+      transform: translateX(-50%);
+      width: fit-content;
+
+      .faq__card-link {
+        background-color: var(--color-forest-shade);
+        border: none;
+        border-radius: 24px;
+        color: var(--color-white);
+        cursor: pointer;
+        font-family: var(--font-family-base-quaternary);
+        font-weight: 500;
+        padding: 11px 20px 11px 11px;
+
+        &:focus,
+        &:active,
+        &:hover {
+          color: var(--color-renew);
+        }
+      }
+    }
+  }
+
+  &__card.active {
+    position: relative;
+    z-index: zindex(background);
+
+    .faq__card-body,
+    .faq__card-video,
+    .pause-button-wrapper {
+      opacity: 1;
+    }
+  }
+
+  &__carousel-dots {
+    cursor: none;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+
+    svg {
+      display: none;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    button {
+      background-clip: content-box;
+      background-color: var(--color-footer-grey-third);
+      border: 4px solid transparent;
+      border-radius: 100%;
+      cursor: pointer;
+      display: block;
+      height: 18px;
+      margin: 0 14px;
+      padding: 0;
+      position: relative;
+      width: 18px;
+
+      @include upto($mobile) {
+        margin: 0 10px;
+      }
+    }
+
+    button.active {
+      background-color: transparent;
+      border-color: var(--color-footer-grey-third);
+      border-width: 3px;
+      height: 18px;
+      width: 18px;
+
+      svg {
+        display: inline-block;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &__carousel.video-playing button.active {
+    border-color: var(--color-renew);
+  }
+
+  &__carousel-arrows {
+    display: none;
+  }
+
+  .circle {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    stroke: var(--color-renew);
+  }
+
+  @include from(desktop) {
+    &__carousel {
+      margin: 0 0 100px;
+      position: relative;
+    }
+
+    &__carousel-dots {
+      display: none;
+    }
+
+    &__carousel-slides {
+      display: flex;
+    }
+
+    &__carousel.rendering .faq__carousel-slides {
+      opacity: 0;
+      transition: transform 0s;
+    }
+
+    &__carousel-arrows {
+      display: flex;
+      justify-content: space-between;
+      left: 50%;
+      max-width: 993px;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      z-index: zindex(layer-4);
+
+      .faq__carousel-arrow {
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-color: transparent;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        width: 40px;
+
+        svg {
+          height: 12px;
+          pointer-events: none;
+          width: 7px;
+        }
+
+        &:hover,
+        &:active {
+          background-color: var(--color-shade);
+
+          svg path {
+            stroke: #fff;
+          }
+        }
+
+        &:disabled {
+          background-color: #2d4038;
+          cursor: not-allowed;
+
+          svg path {
+            stroke: #9ba0a6;
+          }
+        }
+      }
+
+      .faq__carousel--left-arrow {
+        justify-self: flex-start;
+      }
+
+      .faq__carousel--right-arrow {
+        justify-self: flex-end;
+      }
+    }
+
+    &__card {
+      display: flex;
+      margin-right: 55px;
+      min-width: 754px;
+      opacity: 0.4;
+      position: relative;
+      transform: scaleY(0.8);
+
+      &-video {
+        height: 470px;
+        margin-bottom: 0;
+        max-width: none;
+        object-fit: cover;
+        opacity: 1;
+      }
+
+      &-body {
+        background-color: var(--color-forest-shade);
+        border-radius: 16px;
+        bottom: 24px;
+        display: block;
+        left: 25px;
+        margin: 0;
+        max-width: 344px;
+        padding: 32px 32px 18px;
+        position: absolute;
+        text-align: left;
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+      }
+
+      &-title {
+        margin-bottom: 16px;
+      }
+
+      &-paragraph {
+        height: 80px;
+        margin-bottom: 16px;
+      }
+
+      &-cta {
+        cursor: pointer;
+        display: inline-flex;
+        left: 0;
+        margin-top: 0;
+        padding: 0;
+        position: relative;
+        top: 0;
+        transform: translateX(0);
+
+        .faq__card-link {
+          margin-left: -11px;
+        }
+      }
+    }
+
+    &__card.active {
+      opacity: 1;
+
+      .faq__card-body {
+        opacity: 1;
+      }
+    }
+  }
+
+  @include from(desktop-l) {
+    &__card {
+      min-width: 1066px;
+
+      &-video {
+        min-height: 600px;
+      }
+    }
+
+    &__carousel-arrows {
+      max-width: 1344px;
+
+      .faq__carousel-arrow {
+        height: 60px;
+        width: 60px;
+
+        svg {
+          height: 18px;
+          width: 10px;
+        }
+      }
+    }
+  }
+
+  @media (forced-colors: active) {
+    .faq__carousel-arrow {
+      background-color: rgba(255, 255, 255, 0.8);
+      forced-color-adjust: none;
+
+      svg path {
+        stroke: #121b17;
+      }
+    }
+  }
+
+  @keyframes stroke {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+}

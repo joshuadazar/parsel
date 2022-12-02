@@ -1,0 +1,165 @@
+.share {
+  position: relative;
+
+  .body-copy--medium {
+    font-family: var(--font-family-base-quaternary);
+  }
+
+  &__btn {
+    align-items: center;
+    color: var(--color-green-800);
+    display: inline-flex;
+    padding: 8px 16px 8px 0px;
+    position: relative;
+    user-select: none;
+    width: fit-content;
+    -webkit-tap-highlight-color: transparent;
+
+    &:focus,
+    &:hover {
+      color: var(--color-forest);
+    }
+
+    .icon--svg {
+      height: 24px;
+      margin-right: 8px;
+      width: 24px;
+    }
+
+    @include from(desktop) {
+      display: none;
+    }
+  }
+
+  &__btn[aria-expanded='true'] + .share-options {
+    display: inline-block;
+    box-shadow: 0px 1px 3px 1px rgba(60, 64, 67, 0.15),
+      0px 1px 2px 0px rgba(60, 64, 67, 0.3);
+  }
+
+  .share-options {
+    background-color: var(--color-sand);
+    border-radius: 8px;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 48px;
+    width: 174px;
+    z-index: zindex(layer-1);
+
+    @include from(desktop) {
+      display: block;
+      position: relative;
+      top: 0;
+      width: fit-content;
+    }
+  }
+
+  .share-link-wrapper {
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-drew);
+
+      @media (forced-colors: active) {
+        border: 1px solid;
+      }
+    }
+
+    @include from(desktop) {
+      border-radius: 50%;
+    }
+  }
+
+  .share-link {
+    align-items: center;
+    color: var(--color-grey-900);
+    display: inline-flex;
+    padding: 8px;
+    width: 100%;
+
+    & > * {
+      pointer-events: none;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-drew);
+
+      @media (forced-colors: active) {
+        border: 1px solid;
+      }
+    }
+
+    @include from(desktop) {
+      border-radius: 50%;
+
+      .body-copy--medium {
+        font-size: 0;
+        width: 0;
+      }
+
+      &:focus {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .share-icon--svg {
+    height: 32px;
+    margin-right: 8px;
+    width: 32px;
+
+    @include from(desktop) {
+      margin-right: 0;
+    }
+  }
+
+  & ~ .toast { 
+    .toast--success {
+      background-color: var(--color-shade);
+      color: var(--color-sand);
+    }
+
+    .btn-close-toast {
+      color: var(--color-sand);
+      margin: 0;
+    }
+
+    .icon--svg {
+      color: var(--color-sand);
+    }
+
+    @include from(tablet) {
+      .toast__message {
+        width: 414px;
+      }
+    }
+  }
+
+  @include from(desktop) {
+    left: 50%;
+    margin: 0;
+    padding: 0 var(--margin-tablet);
+    position: absolute;
+    transform: translateX(-50%);
+    width: 100%;
+
+    &.fixed {
+      height: fit-content;
+      position: fixed;
+      top: 0;
+      transform: translate(-50%, 128px);
+    }
+
+    &.end-position {
+      position: absolute;
+      top: auto;
+    }
+
+    .share-options {
+      background-color: transparent;
+    }
+  }
+}

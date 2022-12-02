@@ -1,0 +1,71 @@
+.marquee {
+  background-color: var(--color-san);
+  padding: 96px 0;
+
+  @include from(desktop) {
+    padding: 160px 0;
+  }
+
+  &__header {
+    grid-column: 1/-1;
+    text-align: center;
+
+    &-title {
+      margin-bottom: 1rem;
+    }
+
+    &-paragraph {
+      margin-bottom: 3rem;
+    }
+
+    @include from(tablet) {
+      grid-column: 3/11;
+    }
+
+    @include from(desktop) {
+      grid-column: 4/10;
+
+      &-title {
+        margin-bottom: 1.2rem;
+      }
+
+      &-paragraph {
+        margin-bottom: 4.5rem;
+      }
+    }
+
+    @include from(desktop-l) {
+      &-paragraph {
+        margin-bottom: 6rem;
+      }
+    }
+  }
+
+  .progress-carousel .card {
+    .card__img {
+      aspect-ratio: 4/3;
+    }
+
+    @include from(desktop) {
+      &:nth-child(n) {
+        .card__img {
+          aspect-ratio: 3/4;
+        }
+      }
+
+      &:nth-child(-n + 3) {
+        .card__img {
+          aspect-ratio: 1/1;
+        }
+      }
+
+      &:nth-child(3n-1) {
+        margin-top: 48px;
+
+        .card__img {
+          aspect-ratio: 4/3;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,211 @@
+.carousel-wrapper {
+  margin-left: calc(var(--margin-mobile) * -1);
+  grid-column: 1/-1;
+  overflow: hidden;
+  width: calc(100% + (var(--margin-mobile) * 2));
+
+  @include from(tablet) {
+    margin-left: calc(var(--margin-tablet) * -1);
+    width: calc(100% + (var(--margin-tablet) * 2));
+  }
+
+  @include from(desktop) {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.carousel {
+  transform-style: preserve-3d;
+
+  &__slides {
+    display: flex;
+    transition: transform 0.5s;
+
+    &.no-animated {
+      transition: transform 0s;
+    }
+  }
+
+  .col {
+    min-width: 100%;
+    margin: auto;
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 1rem 0;
+    cursor: none;
+
+    svg {
+      display: none;
+      position: absolute;
+      top: 54%;
+      left: 54%;
+      transform: translate(-50%, -50%);
+    }
+
+    button {
+      cursor: pointer;
+      margin: 0 14px;
+    }
+
+    button {
+      background-clip: content-box;
+      background-color: var(--color-forest);
+      border: 4px solid transparent;
+      border-radius: 100%;
+      display: block;
+      height: 18px;
+      padding: 0;
+      position: relative;
+      width: 18px;
+    }
+
+    button.active {
+      background-color: transparent;
+      border-color: var(--color-footer-grey-third);
+      height: 18px;
+      width: 18px;
+
+      svg {
+        display: inline-block;
+      }
+    }
+  }
+
+
+
+  .circle {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    stroke: var(--color-renew);
+  }
+
+  @keyframes stroke {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @include from(tablet) {
+
+    &__slides {
+      transform: translateX(25%);
+    }
+
+    .col {
+      min-width: 50%;
+    }
+  }
+
+  @include from(desktop) {
+    &__dots {
+      display: none;
+    }
+
+    &__slides {
+      transform: translateX(0);
+    }
+
+    .col {
+      min-width: auto;
+      margin: 0;
+    }
+
+    &__slides {
+      display: grid;
+      margin: 0;
+    }
+  }
+}
+
+.sustainability {
+  &__card-logo svg {
+    display: block;
+    position: static;
+    transform: none;
+    width: 96px;
+  }
+
+  &-stat .carousel-wrapper {
+    .carousel {
+      svg {
+        @extend %iconAnimation;
+
+        &#house-meter {
+          #meter-02 {
+            transform: scaleX(40%);
+            transform-origin: 0.976% 58.22%;
+          }
+        }
+      }
+
+      .sustainability__card-logo.is-visible svg {
+        &#forest {
+          #bush-01 {
+            animation: bounce 1s;
+            animation-iteration-count: 5;
+            transform-origin: 20% 87.5%;
+          }
+
+          #bush-02 {
+            animation: bounce 1s;
+            animation-delay: 0.2s;
+            animation-iteration-count: 5;
+            transform-origin: 67.18% 54.16%;
+          }
+
+          #bush-03 {
+            animation: bounce 1s;
+            animation-delay: 0.3s;
+            animation-iteration-count: 5;
+            transform-origin: 81.25% 54.16%;
+          }
+        }
+
+        &#house-meter {
+          #light {
+            animation: fade-up 3s linear;
+            animation-iteration-count: 1;
+          }
+
+          #meter-01 {
+            animation: power-up 3s linear;
+            animation-iteration-count: 1;
+            transform-origin: 29.177% 36.515%;
+          }
+        }
+
+        &#usa-windmills {
+          #windmill-01 {
+            animation: spin 3.5s linear;
+            animation-iteration-count: 1;
+            transform-origin: 35.5% 37.55%;
+          }
+
+          #windmill-02 {
+            animation: spin 3.85s linear;
+            animation-iteration-count: 1;
+            transform-origin: 54.25% 28.4%;
+          }
+
+          #windmill-03 {
+            animation: spin 4.5s linear;
+            animation-iteration-count: 1;
+            transform-origin: 73.55% 44.683%;
+          }
+        }
+      }
+    }
+  }
+}
